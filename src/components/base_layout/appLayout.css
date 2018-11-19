@@ -1,0 +1,59 @@
+/* .logo {
+    background-image: url("../logo.svg");
+} */
+
+
+/* HEADER V2 CSS */
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 0.5fr);
+    grid-auto-rows: minmax(90px, auto);
+    max-width: 100%;
+    margin: 0 auto;
+    grid-gap: 0px;
+    grid-template-areas: 
+    "header header header header header header"
+    "nav main main main main main"
+    "nav main main main main main"
+    "nav main main main main main"
+    "footer footer footer footer footer footer";
+  }
+
+  .wrapper > .header, .content, .footer {
+      background: #db6162;
+      padding: 30px;
+  }
+  
+  .header {
+    grid-area: header;
+  }
+
+  .nav {
+      grid-area: nav;
+      /* background: rgb(171, 211, 186); */
+  }
+
+  .content {
+      grid-area: main;
+      background: whitesmoke;
+  }
+
+  .footer {
+      grid-area: footer;
+      background: rgb(171, 211, 186);
+  }
+
+  .nav > .nav-item{
+    font-family: 'Lucida Sans,Lucida Sans Regular,Lucida Grande,Lucida Sans Unicode,Geneva,Verdana,sans-serif';
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    /* border-bottom: 1px solid #cccccc; */
+    padding: 19px;
+    color: #db6162;
+  }
+
+  .nav > .nav-item:hover {
+    background: rgb(171, 211, 186);
+    color: white;
+  }
