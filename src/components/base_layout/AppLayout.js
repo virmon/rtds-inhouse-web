@@ -11,10 +11,12 @@ import AppFooter from '../base_layout/AppFooter';
 import Header from '../base_layout/Header/HeaderV2';
 import ProductList from '../Products/ProductList';
 import ClientList from '../Products/ClientList';
+import QuotationList from '../Quotations/QuotationList';
 import ProductForm from '../Forms/ProductForm';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import logo from '../../logo.svg';
+import QuotationDetail from '../Quotations/QuotationDetail';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -106,10 +108,10 @@ class AppLayout extends Component {
           </div>
           <div className="content">
               <Switch>
-                  <Route exact path="/" component={ClientList}/>
-                  <Route exact path="/clients" component={ProductList}/>
-                  <Route exact path="/quotations" component={ProductList}/>
-                  <Route exact path="/projects" component={ProductList}/>
+                  <Route exact path="/" component={NoMatch}/>
+                  <Route exact path="/clients" component={ClientList}/>
+                  <Route exact path="/quotations" component={QuotationList}/>
+                  <Route exact path="/projects" component={QuotationDetail}/>
                   <Route exact path="/services" component={ProductForm}/>
                   <Route exact path="/packages" component={ProductForm}/>
                   <Route component={NoMatch}/>
