@@ -29,7 +29,7 @@ const columns = [
   }
 ];
 
-class ClientList extends Component {
+class QuotationList extends Component {
   constructor(props) {
     super(props);
 
@@ -78,39 +78,39 @@ class ClientList extends Component {
 
   render() {
     return(
-      <div>
-      <h2>Clients</h2>
-      <Table bordered dataSource={this.state.products}>
-        <Column
-          title="Name"
-          dataIndex="name"
-          key="name"
-          width="30%"
-        />
-        <Column
-          title="Status"
-          dataIndex="status"
-          key="status"
-        />
-        <Column
-          title="Action"
-          key="action"
-          render={(text, record) => (
-            <span>
-              <Link to={'/form/'+record.id}>
-                <Icon type="edit" style={{color: '#6699cc', cursor: 'pointer'}} />
-              </Link>
-              <span className="ant-divider" />
-              <Popconfirm title="Are you sure delete this item?" onConfirm={() => this.handleDelete(record.id)} okText="Yes" cancelText="No">
-                <Icon type="delete" style={{color: '#cc6666', cursor: 'pointer'}} />
-              </Popconfirm>
-            </span>
-          )}
-        />
-      </Table>
-      </div>
+        <div>
+        <h2>Quotations</h2>
+        <Table bordered dataSource={this.state.products}>
+            <Column
+            title="Name"
+            dataIndex="name"
+            key="name"
+            width="30%"
+            />
+            <Column
+            title="Status"
+            dataIndex="status"
+            key="status"
+            />
+            <Column
+            title="Action"
+            key="action"
+            render={(text, record) => (
+                <span>
+                <Link to={'/form/'+record.id}>
+                    <Icon type="edit" style={{color: '#6699cc', cursor: 'pointer'}} />
+                </Link>
+                <span className="ant-divider" />
+                <Popconfirm title="Are you sure delete this item?" onConfirm={() => this.handleDelete(record.id)} okText="Yes" cancelText="No">
+                    <Icon type="delete" style={{color: '#cc6666', cursor: 'pointer'}} />
+                </Popconfirm>
+                </span>
+            )}
+            />
+        </Table>
+        </div>
     );
   }
 }
 
-export default ClientList;
+export default QuotationList;
