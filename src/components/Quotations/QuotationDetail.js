@@ -107,6 +107,34 @@ class QuotationDetail extends Component {
                     width="40%"
                     />
                 </Table><br/>
+
+                <Table 
+                    bordered
+                    pagination={false} 
+                    scroll={{ y: 300 }} 
+                    dataSource={this.state.products}
+                    title={()=> 'Invoices'}
+                >
+                    <Column
+                    title="Invoice No."
+                    dataIndex="desc"
+                    key="desc"
+                    width="40%"
+                    />
+                    <Column
+                    title="Status"
+                    dataIndex="qty"
+                    key="qty"
+                    width="20%"
+                    />
+                    <Column
+                    title="Date"
+                    dataIndex="price"
+                    key="price"
+                    width="40%"
+                    />
+                </Table><br/>
+
                 <Row gutter={16}>
                     <Col span={16}>
                     </Col>
