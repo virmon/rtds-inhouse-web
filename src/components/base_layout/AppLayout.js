@@ -10,13 +10,19 @@ import AppBreadcrumb from '../base_layout/AppBreadcrumb';
 import AppFooter from '../base_layout/AppFooter';
 import Header from '../base_layout/Header/HeaderV2';
 import ProductList from '../Products/ProductList';
-import ClientList from '../Products/ClientList';
+import ClientList from '../Clients/ClientList';
+import Dashboard from '../Dashboard/Dashboard';
+import Services from '../Packages/Services';
 import QuotationList from '../Quotations/QuotationList';
 import ProductForm from '../Forms/ProductForm';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import logo from '../../logo.svg';
 import QuotationDetail from '../Quotations/QuotationDetail';
+import Projects from '../Clients/Projects';
+import Login from "../../containers/Login";
+import { ProtectedRoute } from '../protected.route';
+import auth from '../../auth';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -96,24 +102,38 @@ class AppLayout extends Component {
         <div className="wrapper">
           <div className="header">
             <div className="header-inner">
+              <button onClick={() => {
+                auth.logout(() =>
+                  // this.props.history.push("/")
+                  localStorage.removeItem('x-access-token'),
+                  this.props.history.push('/')
+                )
+              }}
+              >
+              Logout
+              </button>
               {/* <span>Redtomato Design Studio</span> */}
               {/* <img src={logo} alt="logo" width="100px" height="100px" /> */}
             </div>
           </div>
           <div className="nav">
-            <Link to='/' className="nav-item">DASHBOARD</Link>
+            <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
             <Link to='/clients' className="nav-item">CLIENTS</Link>
-            <Link to='/quotations' className="nav-item">QUOTATIONS</Link>
-            <Link to='/projects' className="nav-item">PROJECTS</Link>
+            <Link to='/services' className="nav-item">SERVICES</Link>
+            {/* <Link to='/quotations' className="nav-item">QUOTATIONS</Link> */}
+            {/* <Link to='/quotations/item' className="nav-item">QUOTATION ITEM</Link> */}
+            {/* <Link to='/projects' className="nav-item">PROJECTS</Link> */}
           </div>
           <div className="content">
               <Switch>
-                  <Route exact path="/" component={NoMatch}/>
+                  {/* <Route path="/login" exact component={Login} /> */}
+                  <Route exact path="/dashboard" component={Dashboard}/>
                   <Route exact path="/clients" component={ClientList}/>
-                  <Route exact path="/quotations" component={QuotationList}/>
-                  <Route exact path="/projects" component={QuotationDetail}/>
-                  <Route exact path="/services" component={ProductForm}/>
-                  <Route exact path="/packages" component={ProductForm}/>
+                  {/* <Route exact path="/quotations" component={QuotationList}/> */}
+                  <Route exact path="/quotations/item" component={QuotationDetail}/>
+                  <Route exact path="/services" component={Services}/>
+                  {/* <ProtectedRoute exact path="/projects" component={Projects}/>
+                  <Route exact path="/packages" component={ProductForm}/> */}
                   <Route component={NoMatch}/>
               </Switch>
           </div>
