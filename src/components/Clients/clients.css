@@ -1,0 +1,13 @@
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    
+}
+
+.project-item {
+    width: 260px;
+    /* height: 100px; */
+    margin: 10px;
+    /* background: green; */
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Table, Icon, message, Popconfirm } from 'antd';
+import { getJwt } from '../../helpers/jwt';
 
 const { Column, ColumnGroup } = Table;
 
@@ -29,12 +30,30 @@ const columns = [
   }
 ];
 
+const dummy = [
+  {
+    "client_name": "Oil My Goodness",
+    "projects": 3,
+    "quote": 1
+  },
+  {
+    "client_name": "Mashiso",
+    "projects": 1,
+    "quote": 1
+  },
+  {
+    "client_name": "MCK",
+    "projects": 2,
+    "quote": 1
+  },
+];
+
 class ClientList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      products: [],
+      clients: [],
       loading: true,
       numberOfRecords: 0
     };
@@ -66,13 +85,20 @@ class ClientList extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
-      // console.log(response.data);
+
+    const jwt = getJwt();
+    console.log(jwt);
+    
+      // if(!jwt) {
+      //     this.props.history.push('/');
+      // }
+    axios.get('https://rtds-api-brian.herokuapp.com/clients', {headers: {Authorization: `Bearer ${jwt}`} }).then(response =>{
       this.setState({
         loading: false,
-        products: response.data,
+        clients: response.data.clients[0],
         numberOfRecords: response.data.length
       })
+      console.log(response.data.clients[0]);
     })
   }
 
@@ -81,18 +107,35 @@ class ClientList extends Component {
       <div>
       <h2>Clients</h2>
       <Table bordered dataSource={this.state.products}>
+      {/* <Table bordered dataSource={dummy}> */}
         <Column
           title="Name"
-          dataIndex="name"
-          key="name"
+          dataIndex="client_name"
+          key="client_name"
           width="30%"
         />
         <Column
-          title="Status"
-          dataIndex="status"
-          key="status"
+          title="Project count"
+          dataIndex="projects"
+          key="projects"
         />
         <Column
+          title="Pending quotations"
+          dataIndex="quote"
+          key="quote"
+        />
+        <Column
+            title="Action"
+            key="action"
+            render={(text, record) => (
+                <span>
+                <Link to={'/quotations/item'}>
+                    OPEN
+                </Link>
+                </span>
+            )}
+          />
+        {/* <Column
           title="Action"
           key="action"
           render={(text, record) => (
@@ -106,7 +149,7 @@ class ClientList extends Component {
               </Popconfirm>
             </span>
           )}
-        />
+        /> */}
       </Table>
       </div>
     );
