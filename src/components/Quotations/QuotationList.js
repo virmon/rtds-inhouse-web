@@ -29,6 +29,104 @@ const columns = [
   }
 ];
 
+const dummy = [
+  {
+      "client_name": "OMG OilMyGoodness",
+      "date_created": "Tue, 20 Nov 2018 23:18:09 GMT",
+      "generated_id": "72305da7-5bad-4c23-a4a5-4431b3e8920b",
+      "is_package": true,
+      "last_updated": "Tue, 20 Nov 2018 23:18:09 GMT",
+      "package_id": "1",
+      "quotation_details": [
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc",
+              "price": 1000,
+              "qty": 5,
+              "quote_id": 2,
+              "service_id": 1
+          },
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc2",
+              "price": 1000,
+              "qty": 3,
+              "quote_id": 2,
+              "service_id": 1
+          }
+      ],
+      "quote_id": 2,
+      "quote_status": "For Approval",
+      "quote_validity": "Tue, 27 Nov 2018 23:18:09 GMT"
+  },
+  {
+      "client_name": "OMG OilMyGoodness",
+      "date_created": "Tue, 20 Nov 2018 23:23:07 GMT",
+      "generated_id": "56a7ae53-bae4-47d6-854b-628233696601",
+      "is_package": true,
+      "last_updated": "Tue, 20 Nov 2018 23:23:07 GMT",
+      "package_id": "1",
+      "quotation_details": [
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc",
+              "price": 1000,
+              "qty": 5,
+              "quote_id": 3,
+              "service_id": 1
+          },
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc2",
+              "price": 1000,
+              "qty": 3,
+              "quote_id": 3,
+              "service_id": 1
+          }
+      ],
+      "quote_id": 3,
+      "quote_status": "For Approval",
+      "quote_validity": "Tue, 27 Nov 2018 23:23:07 GMT"
+  },
+  {
+      "client_name": "MCK MCKFlowers",
+      "date_created": "Tue, 20 Nov 2018 23:31:09 GMT",
+      "generated_id": "978da604-eb9c-4686-8e41-9090ecffb6c9",
+      "is_package": true,
+      "last_updated": "Tue, 20 Nov 2018 23:31:09 GMT",
+      "package_id": "None",
+      "quotation_details": [
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc",
+              "price": 1000,
+              "qty": 5,
+              "quote_id": 4,
+              "service_id": 1
+          },
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc2",
+              "price": 1000,
+              "qty": 3,
+              "quote_id": 4,
+              "service_id": 2
+          },
+          {
+              "created_by": "Ragine Tumulak",
+              "desc": "sample desc3",
+              "price": 10000,
+              "qty": 5,
+              "quote_id": 4,
+              "service_id": 1
+          }
+      ],
+      "quote_id": 4,
+      "quote_status": "For Approval",
+      "quote_validity": "Tue, 27 Nov 2018 23:31:09 GMT"
+  }
+];
+
 class QuotationList extends Component {
   constructor(props) {
     super(props);
@@ -80,17 +178,23 @@ class QuotationList extends Component {
     return(
         <div>
         <h2>Quotations</h2>
-        <Table bordered dataSource={this.state.products}>
+        {/* <Table bordered dataSource={this.state.products}> */}
+        <Table bordered dataSource={dummy}>
             <Column
-            title="Name"
-            dataIndex="name"
-            key="name"
+            title="Client"
+            dataIndex="client_name"
+            key="client_name"
             width="30%"
             />
             <Column
             title="Status"
-            dataIndex="status"
-            key="status"
+            dataIndex="quote_status"
+            key="quote_status"
+            />
+            <Column
+            title="Validity"
+            dataIndex="quote_validity"
+            key="quote_validity"
             />
             <Column
             title="Action"
@@ -98,12 +202,8 @@ class QuotationList extends Component {
             render={(text, record) => (
                 <span>
                 <Link to={'/form/'+record.id}>
-                    <Icon type="edit" style={{color: '#6699cc', cursor: 'pointer'}} />
+                    OPEN
                 </Link>
-                <span className="ant-divider" />
-                <Popconfirm title="Are you sure delete this item?" onConfirm={() => this.handleDelete(record.id)} okText="Yes" cancelText="No">
-                    <Icon type="delete" style={{color: '#cc6666', cursor: 'pointer'}} />
-                </Popconfirm>
                 </span>
             )}
             />
