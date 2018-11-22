@@ -1,0 +1,22 @@
+/* body {
+    background: #db6162;
+    background: rgb(171, 211, 186);
+} */
+
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+      width: 380px;
+      height: 320px;
+      margin: 10px auto;
+      /* background: rgb(171, 211, 186); */
+      background: #db6162;
+      /* background: white; */
+      border-radius: 10px;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+}
