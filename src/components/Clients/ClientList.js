@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Table, Icon, message, Popconfirm } from 'antd';
 import { getJwt } from '../../helpers/jwt';
+import SearchBox from '../Search/SearchBox';
+import dummy_qs from '../../utils/dummy_qs';
 
 const { Column, ColumnGroup } = Table;
 
@@ -53,58 +55,78 @@ class ClientList extends Component {
     super(props);
 
     this.state = {
+      search: '',
       clients: [],
       loading: true,
       numberOfRecords: 0
     };
 
-    this.handleEdit = this.handleEdit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    // this.handleEdit = this.handleEdit.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleEdit(key) {
-    console.log(key);
-  }
+  // handleEdit(key) {
+  //   console.log(key);
+  // }
 
-  handleDelete(key) {
-    axios.delete(`https://pure-harbor-18418.herokuapp.com/products/${key}`)
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-        this.setState({
-          loading: true
-        })
-        axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
-          this.setState({
-            loading: false,
-            products: response.data,
-          })
-        })
-        message.success('Successfully Deleted');
+  // handleDelete(key) {
+  //   axios.delete(`https://pure-harbor-18418.herokuapp.com/products/${key}`)
+  //     .then(res => {
+  //       console.log(res);
+  //       console.log(res.data);
+  //       this.setState({
+  //         loading: true
+  //       })
+  //       axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
+  //         this.setState({
+  //           loading: false,
+  //           products: response.data,
+  //         })
+  //       })
+  //       message.success('Successfully Deleted');
+  //   })
+  // }
+
+  componentDidMount() {
+    axios.get('/clients').then(response =>{
+      // this.setState({
+      //   loading: false,
+      //   clients: response.data,
+      //   numberOfRecords: response.data.length
+      // })
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
     })
   }
 
-  componentDidMount() {
-    axios.get('https://rtds-api.herokuapp.com/clients').then(response =>{
-      this.setState({
-        loading: false,
-        clients: response.data,
-        numberOfRecords: response.data.length
-      })
-      console.log(response.data);
+  // updates search for every keypress
+  handleSearch(event) {
+    // console.log(event.target.value);
+    this.setState({
+      search: event.target.value
     })
   }
 
   render() {
+    // filter search results
+    let filteredResults = this.state.clients.filter((client) => {
+      var found = client.client_firstname.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      return found;
+    });
     return(
       <div>
       <h2>Clients</h2>
-      <Table bordered dataSource={this.state.clients}>
+      <SearchBox triggerSearch={this.handleSearch} />
+      {/* <Table bordered dataSource={this.state.clients}> */}
       {/* <Table bordered dataSource={dummy}> */}
+      <Table bordered dataSource={filteredResults}>
         <Column
-          title="Name"
-          dataIndex="client_id"
-          key="client_id"
+          title="Client"
+          dataIndex="client_company"
+          key="client_company"
           width="30%"
         />
         <Column

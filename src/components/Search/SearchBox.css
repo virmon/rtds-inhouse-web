@@ -1,0 +1,70 @@
+.autocomplete {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  height: 20px;
+}
+
+.result-container {
+  border: 1px solid #cccccc;
+}
+
+.close {
+  display: none;
+}
+
+.open {
+  display: block;
+}
+
+.autocomplete-item {
+  position: relative;
+  background-color: white;
+  padding: 10px;
+}
+
+.autocomplete-item:hover {
+  background-color: #cccccc;
+}
+
+.search-filter {
+  /* border: 1px solid #cccccc; */
+  /* padding: 12px 20px 12px 40px; */
+  /* margin-bottom: 12px; */
+  width: 100%;
+  border-radius: 3px;
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 8px 0px 8px 10px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #e0e0e0;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px #e4a199;
+  padding: 8px 0px 8px 10px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #e4a199;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(204,204,204,1);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(204,204,204,1);
+  box-shadow: 1px 1px 5px 0px rgba(204,204,204,1);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #cccccc;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #cccccc;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #cccccc;
+}

@@ -9,19 +9,22 @@ const { Column, ColumnGroup } = Table;
 const dummy =
 [
     {
-      "quote_no": "12312312",
-      "projects": 3,
-      "quote": 1
+        "quote_no": "111222333",
+        "status": "Expired",
+        "validity": "11-01-18",
+        "date_created": "10-01-18"
     },
     {
-      "quote_no": "Mashiso",
-      "projects": 1,
-      "quote": 1
+        "quote_no": "123123123",
+        "status": "For Approval",
+        "validity": "11-01-18",
+        "date_created": "10-01-18"
     },
     {
-      "quote_no": "MCK",
-      "projects": 2,
-      "quote": 1
+        "quote_no": "333111222",
+        "status": "In Progress",
+        "validity": "11-01-18",
+        "date_created": "10-01-18"
     },
 ];
 
@@ -41,17 +44,25 @@ class QuotationTable extends Component {
                     title="Quotation No."
                     dataIndex="quote_no"
                     key="quote_no"
-                    width="30%"
+                    width="20%"
                     />
                     <Column
-                    title="Project count"
-                    dataIndex="projects"
-                    key="projects"
+                    title="Status"
+                    dataIndex="status"
+                    key="status"
+                    width="10%"
                     />
                     <Column
-                    title="Pending quotations"
-                    dataIndex="quote"
-                    key="quote"
+                    title="Validity"
+                    dataIndex="validity"
+                    key="validity"
+                    width="20%"
+                    />
+                    <Column
+                    title="Created"
+                    dataIndex="date_created"
+                    key="date_created"
+                    width="20%"
                     />
                     <Column
                         title="Action"
@@ -67,7 +78,7 @@ class QuotationTable extends Component {
                                 </Link>
                             <span className="ant-divider" />
                                 <Link to={'/invoice/id'}>
-                                    INVOICE
+                                    CREATE INVOICE
                                 </Link>
                             </span>
                         )}

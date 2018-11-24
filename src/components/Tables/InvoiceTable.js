@@ -10,20 +10,23 @@ const { Column, ColumnGroup } = Table;
 
 const dummy = [
   {
-    invoice_no: "231312",
-    projects: 3,
-    quote: 1
+    "invoice_no": "111222333",
+    "status": "Paid",
+    "amount": "10,000",
+    "date_created": "10-01-18"
   },
   {
-    invoice_no: "Mashiso",
-    projects: 1,
-    quote: 1
+    "invoice_no": "123123123",
+    "status": "Unpaid",
+    "amount": "10,000",
+    "date_created": "10-01-18"
   },
   {
-    invoice_no: "MCK",
-    projects: 2,
-    quote: 1
-  }
+    "invoice_no": "333111222",
+    "status": "Cancelled",
+    "amount": "10,000",
+    "date_created": "10-01-18"
+  },
 ];
 
 class InvoiceTable extends Component {
@@ -42,19 +45,34 @@ class InvoiceTable extends Component {
             title="Invoice No."
             dataIndex="invoice_no"
             key="invoice_no"
-            width="30%"
+            width="20%"
           />
-          <Column title="Project count" dataIndex="projects" key="projects" />
-          <Column title="Pending quotations" dataIndex="quote" key="quote" />
+          <Column
+            title="Status"
+            dataIndex="status"
+            key="status"
+            width="10%"
+          />
+            <Column
+            title="Amount in Php"
+            dataIndex="amount"
+            key="amount"
+            width="20%"
+          />
+            <Column
+            title="Created"
+            dataIndex="date_created"
+            key="date_created"
+            width="20%"
+          />
           <Column
             title="Action"
             key="action"
             render={(text, record) => (
               <span>
-                <Link to={"/invoice/id"}>VIEW</Link>
-                <span className="ant-divider" />
+                {/* <span className="ant-divider" /> */}
                 <Link onClick={() => generatePDF(text)} to="#">
-                  PDF
+                  Save PDF
                 </Link>
               </span>
             )}

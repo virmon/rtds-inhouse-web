@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Icon, message, Popconfirm, Card, Col, Row } from 'antd';
 import axios from 'axios';
+import InvoiceTable from '../Tables/InvoiceTable';
 
 const { Column, ColumnGroup } = Table;
 
@@ -108,32 +109,7 @@ class QuotationDetail extends Component {
                     />
                 </Table><br/>
 
-                <Table 
-                    bordered
-                    pagination={false} 
-                    scroll={{ y: 300 }} 
-                    dataSource={this.state.products}
-                    title={()=> 'Invoices'}
-                >
-                    <Column
-                    title="Invoice No."
-                    dataIndex="desc"
-                    key="desc"
-                    width="40%"
-                    />
-                    <Column
-                    title="Status"
-                    dataIndex="qty"
-                    key="qty"
-                    width="20%"
-                    />
-                    <Column
-                    title="Date"
-                    dataIndex="price"
-                    key="price"
-                    width="40%"
-                    />
-                </Table><br/>
+                <InvoiceTable/><br/>
 
                 <Row gutter={16}>
                     <Col span={16}>
