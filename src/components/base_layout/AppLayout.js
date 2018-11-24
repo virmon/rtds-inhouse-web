@@ -5,24 +5,19 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import menus from '../../utils/menu';
 
 // import components
-import AppHeader from '../base_layout/AppHeader';
-import AppBreadcrumb from '../base_layout/AppBreadcrumb';
-import AppFooter from '../base_layout/AppFooter';
-import Header from '../base_layout/Header/HeaderV2';
-import ProductList from '../Products/ProductList';
+import AppHeader from './AppHeader';
+import AppBreadcrumb from './AppBreadcrumb';
+import AppFooter from './AppFooter';
+import Header from './Header/HeaderV2';
 import ClientList from '../Clients/ClientList';
+import ClientProfile from '../Clients/ClientProfile';
 import Dashboard from '../Dashboard/Dashboard';
 import Services from '../Packages/Services';
-import QuotationList from '../Quotations/QuotationList';
-import ProductForm from '../Forms/ProductForm';
+// import QuotationList from '../Quotations/QuotationList';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
-import logo from '../../logo.svg';
 import QuotationDetail from '../Quotations/QuotationDetail';
-import Projects from '../Clients/Projects';
-import Login from "../../containers/Login";
-import { ProtectedRoute } from '../protected.route';
-import auth from '../../auth';
+import ScrollToTop from '../ScrollToTop';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -62,6 +57,7 @@ class AppLayout extends Component {
   state = {
     collapsed: false,
   };
+  
   onCollapse = (collapsed) => {
     // console.log(collapsed);
     this.setState({ collapsed });
@@ -99,19 +95,10 @@ class AppLayout extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop>
         <div className="wrapper">
           <div className="header">
             <div className="header-inner">
-              <button onClick={() => {
-                auth.logout(() =>
-                  // this.props.history.push("/")
-                  localStorage.removeItem('x-access-token'),
-                  this.props.history.push('/')
-                )
-              }}
-              >
-              Logout
-              </button>
               {/* <span>Redtomato Design Studio</span> */}
               {/* <img src={logo} alt="logo" width="100px" height="100px" /> */}
             </div>
@@ -126,11 +113,11 @@ class AppLayout extends Component {
           </div>
           <div className="content">
               <Switch>
-                  {/* <Route path="/login" exact component={Login} /> */}
                   <Route exact path="/dashboard" component={Dashboard}/>
                   <Route exact path="/clients" component={ClientList}/>
+                  <Route exact path="/client/id" component={ClientProfile}/>
                   {/* <Route exact path="/quotations" component={QuotationList}/> */}
-                  <Route exact path="/quotations/item" component={QuotationDetail}/>
+                  <Route exact path="/quotations/id" component={QuotationDetail}/>
                   <Route exact path="/services" component={Services}/>
                   {/* <ProtectedRoute exact path="/projects" component={Projects}/>
                   <Route exact path="/packages" component={ProductForm}/> */}
@@ -139,6 +126,7 @@ class AppLayout extends Component {
           </div>
           <div className="footer"></div>
         </div>
+        </ScrollToTop>
       </Router>
     );
   }

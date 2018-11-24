@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-pdf/renderer": "^1.0.0-alpha.25",
+    "@react-pdf/styled-components": "^1.2.0",
     "antd": "^2.13.7",
     "axios": "^0.18.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-dropzone": "^7.0.1",
+    "react-pdf": "^4.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "readable-stream": "^3.0.6",
+    "string_decoder": "^1.1.1",
     "superagent": "^4.0.0"
   },
   "scripts": {

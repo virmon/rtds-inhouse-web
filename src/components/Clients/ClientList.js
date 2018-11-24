@@ -85,20 +85,13 @@ class ClientList extends Component {
   }
 
   componentDidMount() {
-
-    const jwt = getJwt();
-    console.log(jwt);
-    
-      // if(!jwt) {
-      //     this.props.history.push('/');
-      // }
-    axios.get('https://rtds-api-brian.herokuapp.com/clients', {headers: {Authorization: `Bearer ${jwt}`} }).then(response =>{
+    axios.get('https://rtds-api.herokuapp.com/clients').then(response =>{
       this.setState({
         loading: false,
-        clients: response.data.clients[0],
+        clients: response.data,
         numberOfRecords: response.data.length
       })
-      console.log(response.data.clients[0]);
+      console.log(response.data);
     })
   }
 
@@ -106,30 +99,30 @@ class ClientList extends Component {
     return(
       <div>
       <h2>Clients</h2>
-      <Table bordered dataSource={this.state.products}>
+      <Table bordered dataSource={this.state.clients}>
       {/* <Table bordered dataSource={dummy}> */}
         <Column
           title="Name"
-          dataIndex="client_name"
-          key="client_name"
+          dataIndex="client_id"
+          key="client_id"
           width="30%"
         />
         <Column
           title="Project count"
-          dataIndex="projects"
-          key="projects"
+          dataIndex="client_firstname"
+          key="client_firstname"
         />
         <Column
           title="Pending quotations"
-          dataIndex="quote"
-          key="quote"
+          dataIndex="client_lastname"
+          key="client_lastname"
         />
         <Column
             title="Action"
             key="action"
             render={(text, record) => (
                 <span>
-                <Link to={'/quotations/item'}>
+                <Link to={'/client/id'}>
                     OPEN
                 </Link>
                 </span>

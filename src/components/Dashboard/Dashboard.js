@@ -6,18 +6,6 @@ class Dashboard extends Component {
         return(
             <div>
                 <h2>Dashboard</h2>
-                {/* <div className="widget">
-                    Ongoing Projects
-                </div>
-                <div className="widget">
-                    Pending Projects
-                </div>
-                <div className="widget">
-                    Accomplished Projects
-                </div>
-                <div className="widget">
-                    No. of Clients
-                </div> */}
                 <Row gutter={16}>
                     <Col span={8}>
                         <Card title="ONGOING PROJECTS" bordered={false}>10</Card>
