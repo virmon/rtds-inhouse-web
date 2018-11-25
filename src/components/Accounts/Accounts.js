@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import AccountsTable from '../Tables/AccountsTable';
 import {Button} from 'antd';
 
@@ -16,7 +17,9 @@ class Accounts extends Component {
     render() {
         return(
             <div>
-                <Button type="primary" onClick={this.createAccount} style={{marginBottom:'20px'}}>Create New Account</Button>
+                <Button type="primary" style={{marginBottom:'20px'}}>
+                    <Link to="/accounts/admin/new">Create New Account</Link>
+                </Button>
                 <AccountsTable />
             </div>
         );

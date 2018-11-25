@@ -14,6 +14,7 @@ import ClientProfile from '../Clients/ClientProfile';
 import Dashboard from '../Dashboard/Dashboard';
 import Services from '../Packages/Services';
 import Accounts from '../Accounts/Accounts';
+import AdminForm from '../Forms/AdminForm';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import QuotationDetail from '../Quotations/QuotationDetail';
@@ -107,7 +108,7 @@ class AppLayout extends Component {
             <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
             <Link to='/clients' className="nav-item">CLIENTS</Link>
             <Link to='/services' className="nav-item">SERVICES</Link>
-            <Link to='/accounts' className="nav-item">ACCOUNTS</Link>
+            <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link>
             {/* <Link to='/quotations' className="nav-item">QUOTATIONS</Link> */}
             {/* <Link to='/quotations/item' className="nav-item">QUOTATION ITEM</Link> */}
             {/* <Link to='/projects' className="nav-item">PROJECTS</Link> */}
@@ -120,7 +121,8 @@ class AppLayout extends Component {
                   <Route exact path="/client/id" component={ClientProfile}/>
                   <Route exact path="/quotations/id" component={QuotationDetail}/>
                   <Route exact path="/services" component={Services}/>
-                  <Route exact path="/accounts" component={Accounts}/>
+                  <Route exact path="/accounts/admin" component={Accounts}/>
+                  <Route exact path="/accounts/admin/new" component={AdminForm}/>
                   <Route component={NoMatch}/>
               </Switch>
           </div>
