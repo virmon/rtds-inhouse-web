@@ -113,7 +113,7 @@ class AppLayout extends Component {
             </div>
           </div>
           <div className="nav">
-            <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
+            <Link to='/' className="nav-item">DASHBOARD</Link>
             <Link to='/clients' className="nav-item">CLIENTS</Link>
             <Link to='/services' className="nav-item">SERVICES</Link>
             <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link>
