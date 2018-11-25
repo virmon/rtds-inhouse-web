@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/api/*"
-  to = "/"
+  to = "https://quizzical-kare-e3193e.netlify.com/"
   status = 200
   force = true
   conditions = {Role = ["admin", "cms"]}
