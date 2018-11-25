@@ -1,14 +1,8 @@
-import React from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import React, { Component } from 'react';
+import { history, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-const FormItem = Form.Item;
-
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
-
-class Login extends React.Component {
+class Login extends Component {
     constructor(props) {
         super(props);
 
@@ -18,35 +12,40 @@ class Login extends React.Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
-    handleChange() {
+    handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    handleSubmit = (e) => {
+    handleSubmit(e) {
         e.preventDefault();
-            axios.post('https://reqres.in/api/login', {
-                email: this.state.email,
-                password: this.state.password
-            }).then(res => {
-                localStorage.setItem('x-access-token', res.data.token);
-                this.props.history.push('/dashboard');
-            });
-        }
+        // axios.post('https://reqres.in/api/login', {
+        axios.post('/api/login', {
+            email: this.state.email,
+            password: this.state.password
+        }).then(res => {
+            localStorage.setItem('x-access-token', res.data.token);
+            localStorage.setItem('public-id', res.data.public_id);
+            console.log(res.data);
+            this.props.history.push('/dashboard');
+        });
     }
-
-//   render() {
-    //   return(
-        //   <div>
-        //       <form>
-        //           <label>email</label><input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
-        //           <label>password</label><input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
-        //       </form>
-        //   </div>
-    //   );
-    // }
+    render() {
+        return(
+            <div>
+              <form onSubmit = {e => this.handleSubmit(e)} >
+                  <label>email</label><input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
+                  <label>password</label><input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
+                  <button type="submit">Login</button>
+              </form>
+          </div>
+        );
+    }
+}
 
 export default Login;

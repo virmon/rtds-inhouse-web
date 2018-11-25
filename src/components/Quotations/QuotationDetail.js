@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Icon, message, Popconfirm, Card, Col, Row } from 'antd';
+import { Table, Icon, message, Popconfirm, Card, Col, Row, Button } from 'antd';
 import axios from 'axios';
 import InvoiceTable from '../Tables/InvoiceTable';
 
@@ -16,9 +16,7 @@ class QuotationDetail extends Component {
         super(props);
     
         this.state = {
-          products: [],
-          loading: true,
-          numberOfRecords: 0
+          quoteDetail: []
         };
     
         // this.handleEdit = this.handleEdit.bind(this);
@@ -47,31 +45,36 @@ class QuotationDetail extends Component {
     //     })
     //   }
     
-      componentDidMount() {
-        axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
-          // console.log(response.data);
-          this.setState({
-            loading: false,
-            products: response.data,
-            numberOfRecords: response.data.length
+    componentDidMount() {
+        let pathSnippets = this.props.location.pathname.split('/');
+        console.log(pathSnippets[2]);
+        axios.get('/api/quotation/'+pathSnippets[2]).then(response =>{
+            this.setState({
+                quoteDetail: response.data
+            })
+            console.log(response.data.quote_validity);
           })
-        })
-      }
+          .catch(function (error) {
+            console.log(error);
+          })
+    }
+
     render() {
         return(
             <div className="">
+                <Button type="primary" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Back</Button>
                 <Row gutter={16}>
                     <Col span={8}>
                         <Card title="CLIENT" bordered={false}>Oil My Goodness</Card>
                     </Col>
                     <Col span={8}>
-                        <Card title="STATUS" bordered={false}>For Approval</Card>
+                        <Card title="STATUS" bordered={false}>{this.state.quoteDetail.quote_status}</Card>
                     </Col>
                     <Col span={8}>
-                        <Card title="LAST UPDATED" bordered={false}>11/20/2018</Card>
+                        <Card title="LAST UPDATED" bordered={false}>{this.state.quoteDetail.quote_validity}</Card>
                     </Col>
                 </Row><br/>
-                <Row gutter={16}>
+                {/* <Row gutter={16}>
                     <Col span={8}>
                         <Card title="CREATED BY" bordered={false}>Admin</Card>
                     </Col>
@@ -79,14 +82,14 @@ class QuotationDetail extends Component {
                         <Card title="STATUS" bordered={false}>For Approval</Card>
                     </Col>
                     <Col span={8}>
-                        <Card title="VALID UNTIL" bordered={false}>11/27/2018</Card>
+                        <Card title="VALID UNTIL" bordered={false}>{this.state.quoteDetail.quote_validity}</Card>
                     </Col>
-                </Row><br/>
+                </Row><br/> */}
                 <Table 
                     bordered
                     pagination={false} 
                     scroll={{ y: 300 }} 
-                    dataSource={this.state.products}
+                    dataSource={this.state.quoteDetail.quotation_details}
                     title={()=> 'Services'}
                 >
                     <Column
@@ -103,8 +106,8 @@ class QuotationDetail extends Component {
                     />
                     <Column
                     title="PRICE"
-                    dataIndex="price"
-                    key="price"
+                    dataIndex="unit_price"
+                    key="unit_price"
                     width="40%"
                     />
                 </Table><br/>

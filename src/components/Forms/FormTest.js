@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Icon, Button, Select, InputNumber } from 'antd';
+import { Form, Input, Icon, Button, Select, InputNumber, message } from 'antd';
 import axios from 'axios';
 
 const FormItem = Form.Item;
@@ -13,7 +13,8 @@ class DynamicFieldSet extends React.Component {
     super(props);
 
     this.state = {
-      services: []
+      services: [],
+      key: localStorage.getItem('public-id')
     }
 
     // this.goBack = this.goBack.bind(this);
@@ -59,12 +60,40 @@ componentDidMount() {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
+        console.log("Save Form");
+        this.props.form.validateFields((err, values) => {
+          if (!err) {
+              console.log('Received values of form: ', values);
+              console.log(this.state.key);
+              axios.post(`/api/${this.state.key}/quotation`, values)
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+                this.success();
+                this.props.form.setFieldsValue({
+                  promo: '',
+                  package: '',
+                  desc: [],
+                  qty: '',
+                  service_name: [],
+                  service_type: []
+                });
+              });
+            // }
+          } else {
+              console.log('submit error');
+              this.error();
+          }
+        });
   }
+
+  success = () => {
+    message.success('Saved Successfully', 10);
+  };
+
+  error = () => {
+    message.error('Could not be saved. Please try again...', 10);
+  };
 
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
@@ -119,11 +148,12 @@ componentDidMount() {
             }],
           })(
             <Select placeholder="Select service">
-            {
+            {/* {
               this.state.services.map((service) => 
-                <Option value={service.service_name}>{service.service_name}</Option>
+                <Option value={service.service_name} onChange={this.onChange}>{service.service_name}</Option>
               )
-            }
+            } */}
+              <Option value="Layout Photography">Layout Photography</Option>
             </Select>
           )}
         </FormItem>
@@ -141,8 +171,7 @@ componentDidMount() {
             }],
           })(
             <Select placeholder="Select service type">
-                        <Option value="layout">Layout Design</Option>
-                        <Option value="Stickers">Stickers</Option>
+                        <Option value="Photography">Photography</Option>
             </Select>
           )}
         </FormItem>

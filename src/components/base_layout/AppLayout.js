@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { Layout, Menu, Icon, Button } from 'antd';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect, history} from 'react-router-dom';
 
 // import menus from '../../utils/menu';
 
@@ -17,7 +17,8 @@ import Accounts from '../Accounts/Accounts';
 import AdminForm from '../Forms/AdminForm';
 import ClientForm from '../Forms/ClientForm';
 import Profile from '../Accounts/Profile';
-// import Login from '../Accounts/Login';
+import Login from '../Accounts/Login';
+import ClientApp from '../Portal/ClientApp';
 import RequestQuotation from '../Forms/RequestQuotation';
 import RequestQuoteForm from '../Forms/RequestQuoteForm';
 import Form from '../Forms/FormTest';
@@ -100,6 +101,14 @@ class AppLayout extends Component {
           );
         }
   }
+
+  logout() {
+    localStorage.removeItem('x-access-token');
+    localStorage.removeItem('public-id');
+    // this.props.history.push('/');
+    // console.log(this.props.history);
+  }
+  
   render() {
     return (
       <Router>
@@ -107,6 +116,9 @@ class AppLayout extends Component {
         <div className="wrapper">
           <div className="header">
           {/* <Login isLogin={true} /> */}
+          <Button onClick={this.logout.bind(this)}>
+            Logout
+          </Button>
             <div className="header-inner">
               {/* <span>Redtomato Design Studio</span> */}
               {/* <img src={logo} alt="logo" width="100px" height="100px" /> */}
@@ -124,23 +136,21 @@ class AppLayout extends Component {
           </div>
           <div className="content">
               <Switch>
-                  {/* <Route exact path="/login" component={Login}/> */}
-                  {/* <AuthenticatedComponent> */}
-                    <Route exact path="/" component={Dashboard}/>
-                  {/* </AuthenticatedComponent> */}
-                  
-                  <Route exact path="/clients" component={ClientList}/>
-                  <Route exact path="/client/:id" component={ClientProfile}/>
-                  <Route exact path="/quotation/:id" component={QuotationDetail}/>
-                  <Route exact path="/services" component={Services}/>
-                  <Route exact path="/accounts/admin" component={Accounts}/>
-                  <Route exact path="/accounts/admin/form" component={AdminForm}/>
-                  <Route exact path="/accounts/client/form" component={ClientForm}/>
-                  <Route exact path="/profile" component={Profile}/>
-                  {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
-                  <Route exact path="/request/quotation" component={Form}/>
-                  {/* <Route exact path="/request/quotation/:id" component={ClientForm}/> */}
-                  <Route component={NoMatch}/>
+                <Route exact path="/" component={Login}/>
+                <AuthenticatedComponent>
+                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/clients" component={ClientList}/>
+                <Route exact path="/client/:id" component={ClientProfile}/>
+                <Route exact path="/quotation/:id" component={QuotationDetail}/>
+                <Route exact path="/services" component={Services}/>
+                <Route exact path="/accounts/admin" component={Accounts}/>
+                <Route exact path="/accounts/admin/form" component={AdminForm}/>
+                {/* <Route exact path="/request/quotation/:id" component={ClientForm}/> */}
+                <Route exact path="/profile" component={Profile}/>
+                {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
+                <Route exact path="/request/quotation" component={Form}/>
+                </AuthenticatedComponent>
+                <Route component={NoMatch}/>
               </Switch>
           </div>
           <div className="footer"></div>
