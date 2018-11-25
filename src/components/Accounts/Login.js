@@ -46,6 +46,10 @@ class Login extends Component {
               <ul>
                   <li>username: omg@email</li>
                   <li>password: OMG123</li>
+              </ul><br/>
+              <ul>
+                  <li>default password for new admins created</li>
+                  <li>password: (lastname)123</li>
               </ul>
           </div>
         );
