@@ -47,7 +47,7 @@ class ClientList extends Component {
   // }
 
   componentDidMount() {
-    axios.get('/api//clients/').then(response =>{
+    axios.get('/api/clients/').then(response =>{
       this.setState({
         loading: false,
         clients: response.data.clients,
