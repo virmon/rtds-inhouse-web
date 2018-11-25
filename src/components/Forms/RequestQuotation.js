@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form, Input, InputNumber, message, Button, Upload, Icon, Select, Radio } from 'antd';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
-import request from 'superagent';
 import './requestQuotation.css';
 // const FormItem = Form.Item;
 // const { TextArea } = Input;

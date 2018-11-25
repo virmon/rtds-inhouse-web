@@ -14,8 +14,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "readable-stream": "^3.0.6",
-    "string_decoder": "^1.1.1",
-    "superagent": "^4.0.0"
+    "string_decoder": "^1.1.1"
   },
   "scripts": {
     "start": "react-app-rewired start",

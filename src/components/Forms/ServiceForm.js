@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, InputNumber, message, Button, Upload, Icon, Select, Radio } from 'antd';
 import axios from 'axios';
-import request from 'superagent';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const Option = Select.Option;
