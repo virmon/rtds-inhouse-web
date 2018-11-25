@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import AccountsTable from '../Tables/AccountsTable';
+import ClientProfile from '../Clients/ClientProfile';
 import {Button} from 'antd';
 
-class Accounts extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
 
-        this.createAccount = this.createAccount.bind(this);
-    }
-
-    createAccount() {
-        console.log("Open form");
     }
 
     render() {
         return(
             <div>
                 <Button type="primary" style={{marginBottom:'20px'}}>
-                    <Link to="/accounts/admin/form">Create New Account</Link>
+                    <Link to="/request/quotation">Request Quotation</Link>
                 </Button>
-                <AccountsTable />
+                <ClientProfile />
             </div>
         );
     }
 }
 
-export default Accounts;
+export default Profile;

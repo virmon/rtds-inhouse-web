@@ -73,7 +73,7 @@ class AccountsTable extends Component {
                                 VIEW
                             </Link>
                             <span className="ant-divider" />
-                                <Link to={'/invoice/id'}>
+                                <Link to={'/accounts/admin/form'}>
                                     EDIT
                                 </Link>
                             <span className="ant-divider" />

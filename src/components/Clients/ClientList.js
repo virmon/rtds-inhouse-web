@@ -78,7 +78,7 @@ class ClientList extends Component {
       <div>
       {/* <h2>Clients</h2> */}
       <Button type="primary" style={{marginBottom:'20px'}}>
-          <Link to="/accounts/client/new">Add New Client</Link>
+          <Link to="/accounts/client/form">Add New Client</Link>
       </Button>
       <SearchBox triggerSearch={this.handleSearch} />
       {/* <Table bordered dataSource={this.state.clients}> */}
