@@ -126,7 +126,7 @@ class AppLayout extends Component {
               <Switch>
                   {/* <Route exact path="/login" component={Login}/> */}
                   {/* <AuthenticatedComponent> */}
-                    <Route exact path="/dashboard" component={Dashboard}/>
+                    <Route exact path="/" component={Dashboard}/>
                   {/* </AuthenticatedComponent> */}
                   
                   <Route exact path="/clients" component={ClientList}/>
