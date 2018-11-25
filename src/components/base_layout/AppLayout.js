@@ -17,6 +17,9 @@ import Accounts from '../Accounts/Accounts';
 import AdminForm from '../Forms/AdminForm';
 import ClientForm from '../Forms/ClientForm';
 import Profile from '../Accounts/Profile';
+import RequestQuotation from '../Forms/RequestQuotation';
+import RequestQuoteForm from '../Forms/RequestQuoteForm';
+import Form from '../Forms/FormTest';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import QuotationDetail from '../Quotations/QuotationDetail';
@@ -128,7 +131,8 @@ class AppLayout extends Component {
                   <Route exact path="/accounts/admin/form" component={AdminForm}/>
                   <Route exact path="/accounts/client/form" component={ClientForm}/>
                   <Route exact path="/profile" component={Profile}/>
-                  {/* <Route exact path="/request/quotation" component={ClientForm}/> */}
+                  {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
+                  <Route exact path="/request/quotation" component={Form}/>
                   {/* <Route exact path="/request/quotation/:id" component={ClientForm}/> */}
                   <Route component={NoMatch}/>
               </Switch>

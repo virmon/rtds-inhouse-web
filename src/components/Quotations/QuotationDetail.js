@@ -21,31 +21,31 @@ class QuotationDetail extends Component {
           numberOfRecords: 0
         };
     
-        this.handleEdit = this.handleEdit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+        // this.handleEdit = this.handleEdit.bind(this);
+        // this.handleDelete = this.handleDelete.bind(this);
       }
     
-      handleEdit(key) {
-        console.log(key);
-      }
+    //   handleEdit(key) {
+    //     console.log(key);
+    //   }
     
-      handleDelete(key) {
-        axios.delete(`https://pure-harbor-18418.herokuapp.com/products/${key}`)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-            this.setState({
-              loading: true
-            })
-            axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
-              this.setState({
-                loading: false,
-                products: response.data,
-              })
-            })
-            message.success('Successfully Deleted');
-        })
-      }
+    //   handleDelete(key) {
+    //     axios.delete(`https://pure-harbor-18418.herokuapp.com/products/${key}`)
+    //       .then(res => {
+    //         console.log(res);
+    //         console.log(res.data);
+    //         this.setState({
+    //           loading: true
+    //         })
+    //         axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
+    //           this.setState({
+    //             loading: false,
+    //             products: response.data,
+    //           })
+    //         })
+    //         message.success('Successfully Deleted');
+    //     })
+    //   }
     
       componentDidMount() {
         axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
