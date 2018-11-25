@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Table, Icon, message, Popconfirm } from 'antd';
+import { Table, Button } from 'antd';
 // import { getJwt } from '../../helpers/jwt';
 import SearchBox from '../Search/SearchBox';
 // import dummy_qs from '../../utils/dummy_qs';
@@ -76,7 +76,10 @@ class ClientList extends Component {
     });
     return(
       <div>
-      <h2>Clients</h2>
+      {/* <h2>Clients</h2> */}
+      <Button type="primary" style={{marginBottom:'20px'}}>
+          <Link to="/accounts/client/new">Add New Client</Link>
+      </Button>
       <SearchBox triggerSearch={this.handleSearch} />
       {/* <Table bordered dataSource={this.state.clients}> */}
       {/* <Table bordered dataSource={dummy}> */}

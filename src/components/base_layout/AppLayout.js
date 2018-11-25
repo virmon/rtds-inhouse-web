@@ -15,6 +15,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import Services from '../Packages/Services';
 import Accounts from '../Accounts/Accounts';
 import AdminForm from '../Forms/AdminForm';
+import ClientForm from '../Forms/ClientForm';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import QuotationDetail from '../Quotations/QuotationDetail';
@@ -123,6 +124,7 @@ class AppLayout extends Component {
                   <Route exact path="/services" component={Services}/>
                   <Route exact path="/accounts/admin" component={Accounts}/>
                   <Route exact path="/accounts/admin/new" component={AdminForm}/>
+                  <Route exact path="/accounts/client/new" component={ClientForm}/>
                   <Route component={NoMatch}/>
               </Switch>
           </div>
