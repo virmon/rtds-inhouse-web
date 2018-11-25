@@ -13,7 +13,7 @@ import ClientList from '../Clients/ClientList';
 import ClientProfile from '../Clients/ClientProfile';
 import Dashboard from '../Dashboard/Dashboard';
 import Services from '../Packages/Services';
-// import QuotationList from '../Quotations/QuotationList';
+import Accounts from '../Accounts/Accounts';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import QuotationDetail from '../Quotations/QuotationDetail';
@@ -107,20 +107,20 @@ class AppLayout extends Component {
             <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
             <Link to='/clients' className="nav-item">CLIENTS</Link>
             <Link to='/services' className="nav-item">SERVICES</Link>
+            <Link to='/accounts' className="nav-item">ACCOUNTS</Link>
             {/* <Link to='/quotations' className="nav-item">QUOTATIONS</Link> */}
             {/* <Link to='/quotations/item' className="nav-item">QUOTATION ITEM</Link> */}
             {/* <Link to='/projects' className="nav-item">PROJECTS</Link> */}
           </div>
           <div className="content">
               <Switch>
+                  {/* <Route exact path="/login" component={Login}/> */}
                   <Route exact path="/dashboard" component={Dashboard}/>
                   <Route exact path="/clients" component={ClientList}/>
                   <Route exact path="/client/id" component={ClientProfile}/>
-                  {/* <Route exact path="/quotations" component={QuotationList}/> */}
                   <Route exact path="/quotations/id" component={QuotationDetail}/>
                   <Route exact path="/services" component={Services}/>
-                  {/* <ProtectedRoute exact path="/projects" component={Projects}/>
-                  <Route exact path="/packages" component={ProductForm}/> */}
+                  <Route exact path="/accounts" component={Accounts}/>
                   <Route component={NoMatch}/>
               </Switch>
           </div>
