@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Icon, message, Popconfirm, Card, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
 const { Column, ColumnGroup } = Table;
 // import dummy from '../../utils/dummy.js';
@@ -29,6 +29,28 @@ const dummy =
 ];
 
 class AccountsTable extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            accounts: []
+        }
+    
+        // this.goBack = this.goBack.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get('/api/accounts/').then(response =>{
+            this.setState({
+                // services: response.data,
+                accounts: response.data.admins
+            })
+            console.log(response.data.admins);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+    }
     render(){
         return(
             <div>
@@ -38,24 +60,24 @@ class AccountsTable extends Component {
                     title={() => 'List of admins'}
                     pagination={false} 
                     scroll={{ y: 300 }} 
-                    dataSource={dummy}
+                    dataSource={this.state.accounts}
                 >
                     <Column
-                    title="Name"
-                    dataIndex="quote_no"
-                    key="quote_no"
+                    title="Firstname"
+                    dataIndex="admin_firstname"
+                    key="admin_firstname"
                     width="20%"
                     />
                     <Column
-                    title="Email"
-                    dataIndex="status"
-                    key="status"
+                    title="Lastname"
+                    dataIndex="admin_lastname"
+                    key="admin_lastname"
                     width="10%"
                     />
                     <Column
-                    title="Contact"
-                    dataIndex="validity"
-                    key="validity"
+                    title="Email"
+                    dataIndex="admin_email"
+                    key="admin_email"
                     width="20%"
                     />
                     <Column
@@ -64,15 +86,11 @@ class AccountsTable extends Component {
                     key="date_created"
                     width="20%"
                     />
-                    <Column
+                    {/* <Column
                         title="Action"
                         key="action"
                         render={(text, record) => (
                             <span>
-                            <Link to={'/quotations/id'}>
-                                VIEW
-                            </Link>
-                            <span className="ant-divider" />
                                 <Link to={'/accounts/admin/form'}>
                                     EDIT
                                 </Link>
@@ -82,7 +100,7 @@ class AccountsTable extends Component {
                                 </Link>
                             </span>
                         )}
-                    />
+                    /> */}
                 </Table>
             </div>
         );

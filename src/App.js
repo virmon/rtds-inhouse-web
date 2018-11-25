@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import components
 import AppLayout from './components/base_layout/AppLayout';
 import NoMatch from './components/NoMatch/NoMatch';
+import Login from './components/Accounts/Login';
+import AuthenticatedComponent from './components/AuthenticatedComponent';
 // import './components/appLayout.css';
 import logo from './logo.svg';
 
@@ -18,7 +20,10 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path="/dashboard" component={AppLayout} /> */}
+          <Route exact path="/" component={Login} />
+          <AuthenticatedComponent>
+          <Route exact path="/dashboard" component={AppLayout} />
+          </AuthenticatedComponent>
           <Route component={NoMatch}/>
         </Switch>
       </Router>

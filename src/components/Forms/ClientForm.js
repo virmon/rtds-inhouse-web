@@ -49,39 +49,28 @@ class ClientForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("Save Form");
-        // this.props.form.validateFields((err, values) => {
-        //   if (!err) {
-        //     let pathSnippets = this.props.location.pathname.split('/');
-        //     if(pathSnippets[2]) {
-        //       console.log('Received values of form: ', values);
-        //       axios.put(`/${pathSnippets[2]}`, values)
-        //       .then(res => {
-        //         console.log(res);
-        //         console.log(res.data);
-        //         this.success();
-        //         this.props.history.goBack();
-        //       });
-        //     } else {
-        //       console.log('Received values of form: ', values);
-        //       axios.post(``, values)
-        //       .then(res => {
-        //         console.log(res);
-        //         console.log(res.data);
-        //         this.success();
-        //         this.props.form.setFieldsValue({
-        //           firstname: '',
-        //           lastname: '',
-        //           company: '',
-        //           email: '',
-        //           mobile: ''
-        //         });
-        //       });
-        //     }
-        //   } else {
-        //       console.log('submit error');
-        //       this.error();
-        //   }
-        // });
+        this.props.form.validateFields((err, values) => {
+          if (!err) {
+              console.log('Received values of form: ', values);
+              axios.post(`/api/clients`, values)
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+                this.success();
+                this.props.form.setFieldsValue({
+                  firstname: '',
+                  lastname: '',
+                  company_name: '',
+                  email: '',
+                  mobile: ''
+                });
+              });
+            // }
+          } else {
+              console.log('submit error');
+              this.error();
+          }
+        });
     }
 
     success = () => {
@@ -140,7 +129,7 @@ class ClientForm extends Component {
                 hasFeedback
                 {...formItemLayout}
               >
-                {getFieldDecorator('company', {
+                {getFieldDecorator('company_name', {
                     rules: [
                     { required: true, message: 'Please input company!' },
                     ],

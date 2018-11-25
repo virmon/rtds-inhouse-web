@@ -17,6 +17,7 @@ import Accounts from '../Accounts/Accounts';
 import AdminForm from '../Forms/AdminForm';
 import ClientForm from '../Forms/ClientForm';
 import Profile from '../Accounts/Profile';
+// import Login from '../Accounts/Login';
 import RequestQuotation from '../Forms/RequestQuotation';
 import RequestQuoteForm from '../Forms/RequestQuoteForm';
 import Form from '../Forms/FormTest';
@@ -24,6 +25,7 @@ import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import QuotationDetail from '../Quotations/QuotationDetail';
 import ScrollToTop from '../ScrollToTop';
+import AuthenticatedComponent from '../AuthenticatedComponent';
 
 const { Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -104,6 +106,7 @@ class AppLayout extends Component {
         <ScrollToTop>
         <div className="wrapper">
           <div className="header">
+          {/* <Login isLogin={true} /> */}
             <div className="header-inner">
               {/* <span>Redtomato Design Studio</span> */}
               {/* <img src={logo} alt="logo" width="100px" height="100px" /> */}
@@ -122,10 +125,13 @@ class AppLayout extends Component {
           <div className="content">
               <Switch>
                   {/* <Route exact path="/login" component={Login}/> */}
-                  <Route exact path="/dashboard" component={Dashboard}/>
+                  {/* <AuthenticatedComponent> */}
+                    <Route exact path="/dashboard" component={Dashboard}/>
+                  {/* </AuthenticatedComponent> */}
+                  
                   <Route exact path="/clients" component={ClientList}/>
-                  <Route exact path="/client/id" component={ClientProfile}/>
-                  <Route exact path="/quotations/id" component={QuotationDetail}/>
+                  <Route exact path="/client/:id" component={ClientProfile}/>
+                  <Route exact path="/quotation/:id" component={QuotationDetail}/>
                   <Route exact path="/services" component={Services}/>
                   <Route exact path="/accounts/admin" component={Accounts}/>
                   <Route exact path="/accounts/admin/form" component={AdminForm}/>

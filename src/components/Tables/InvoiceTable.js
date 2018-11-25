@@ -39,7 +39,7 @@ class InvoiceTable extends Component {
           title={() => "All Invoice"}
           pagination={false}
           scroll={{ y: 300 }}
-          dataSource={dummy}
+          dataSource={this.props.data}
         >
           <Column
             title="Invoice No."

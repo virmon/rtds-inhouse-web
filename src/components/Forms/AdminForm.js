@@ -49,38 +49,38 @@ class AdminForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("Save Form");
-        // this.props.form.validateFields((err, values) => {
-        //   if (!err) {
-        //     let pathSnippets = this.props.location.pathname.split('/');
-        //     if(pathSnippets[2]) {
-        //       console.log('Received values of form: ', values);
-        //       axios.put(`/${pathSnippets[2]}`, values)
-        //       .then(res => {
-        //         console.log(res);
-        //         console.log(res.data);
-        //         this.success();
-        //         this.props.history.goBack();
-        //       });
-        //     } else {
-        //       console.log('Received values of form: ', values);
-        //       axios.post(``, values)
-        //       .then(res => {
-        //         console.log(res);
-        //         console.log(res.data);
-        //         this.success();
-        //         this.props.form.setFieldsValue({
-        //           firstname: '',
-        //           lastname: '',
-        //           email: '',
-        //           role: ''
-        //         });
-        //       });
-        //     }
-        //   } else {
-        //       console.log('submit error');
-        //       this.error();
-        //   }
-        // });
+        this.props.form.validateFields((err, values) => {
+          if (!err) {
+            // let pathSnippets = this.props.location.pathname.split('/');
+            // if(pathSnippets[2]) {
+            //   console.log('Received values of form: ', values);
+            //   axios.put(`/${pathSnippets[2]}`, values)
+            //   .then(res => {
+            //     console.log(res);
+            //     console.log(res.data);
+            //     this.success();
+            //     this.props.history.goBack();
+            //   });
+            // } else {
+              console.log('Received values of form: ', values);
+              axios.post(`/api/accounts`, values)
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+                this.success();
+                this.props.form.setFieldsValue({
+                  firstname: '',
+                  lastname: '',
+                  email: '',
+                  role: ''
+                });
+              });
+            // }
+          } else {
+              console.log('submit error');
+              this.error();
+          }
+        });
     }
 
     success = () => {
@@ -148,8 +148,7 @@ class AdminForm extends Component {
                 )}
             </FormItem>
             
-
-            <FormItem
+            {/* <FormItem
                 {...formItemLayout}
                 label="Role"
                 hasFeedback
@@ -164,7 +163,7 @@ class AdminForm extends Component {
                         <Option value="makeups">Designer</Option>
                     </Select>
                 )}
-            </FormItem>
+            </FormItem> */}
 
               <FormItem {...buttonItemLayout}>
                 <Button type="deafult" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Cancel</Button>

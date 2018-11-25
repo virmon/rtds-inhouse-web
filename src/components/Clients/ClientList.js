@@ -71,7 +71,7 @@ class ClientList extends Component {
   render() {
     // filter search results
     let filteredResults = this.state.clients.filter((client) => {
-      var found = client.client_firstname.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      var found = client.company_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
       return found;
     });
     return(
@@ -86,26 +86,26 @@ class ClientList extends Component {
       <Table bordered dataSource={filteredResults}>
         <Column
           title="Client"
-          dataIndex="client_company"
-          key="client_company"
+          dataIndex="company_name"
+          key="company_name"
           width="30%"
         />
         <Column
-          title="Project count"
-          dataIndex="client_firstname"
-          key="client_firstname"
+          title="Mobile No."
+          dataIndex="client_mobile"
+          key="client_mobile"
         />
         <Column
-          title="Pending quotations"
-          dataIndex="client_lastname"
-          key="client_lastname"
+          title="Email"
+          dataIndex="client_email"
+          key="client_email"
         />
         <Column
             title="Action"
             key="action"
             render={(text, record) => (
                 <span>
-                <Link to={'/client/id'}>
+                <Link to={`/client/${record.public_id}`}>
                     OPEN
                 </Link>
                 </span>

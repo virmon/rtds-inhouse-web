@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, Icon, Button, Select, InputNumber } from 'antd';
+import axios from 'axios';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -8,6 +9,27 @@ const { TextArea } = Input;
 let id = 0;
 
 class DynamicFieldSet extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      services: []
+    }
+
+    // this.goBack = this.goBack.bind(this);
+}
+
+componentDidMount() {
+    axios.get('/api/services/').then(response =>{
+        this.setState({
+            services: response.data.services
+        })
+        console.log(response.data.services);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+}
   remove = (k) => {
     const { form } = this.props;
     // can use data-binding to get
@@ -97,8 +119,11 @@ class DynamicFieldSet extends React.Component {
             }],
           })(
             <Select placeholder="Select service">
-                        <Option value="layout">Layout Design</Option>
-                        <Option value="Stickers">Stickers</Option>
+            {
+              this.state.services.map((service) => 
+                <Option value={service.service_name}>{service.service_name}</Option>
+              )
+            }
             </Select>
           )}
         </FormItem>

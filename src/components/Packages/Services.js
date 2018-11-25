@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Icon, message, Popconfirm } from 'antd';
+import axios from 'axios';
 
 const { Column, ColumnGroup } = Table;
 
@@ -37,29 +38,58 @@ const dummy = [
 ];
 
 class Services extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            // service_name: '',
+            // service_cat: '',
+            // base_price: 0
+            services: []
+        }
+    
+        // this.goBack = this.goBack.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get('/api/services/').then(response =>{
+            this.setState({
+                services: response.data.services,
+                // service_name: response.data.service_name,
+                // service_cat: response.data.cat,
+                // base_price: response.data.base_price
+            })
+            console.log(response.data.services);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+    }
+
     render() {
+        // console.log(this.state.services);
         return(
             <div>
                 <h2>Services</h2>
-                {/* <Table bordered dataSource={this.state.products}> */}
-                <Table bordered dataSource={dummy}>
+                <Table bordered dataSource={this.state.services}>
+                {/* <Table bordered dataSource={dummy}> */}
                     <Column
                     title="Service"
-                    dataIndex="client_name"
-                    key="client_name"
+                    dataIndex="service_name"
+                    key="service_name"
                     width="30%"
                     />
                     <Column
                     title="Description"
-                    dataIndex="quote_status"
-                    key="quote_status"
+                    dataIndex="service_cat"
+                    key="service_cat"
                     />
                     <Column
                     title="Price"
-                    dataIndex="quote_validity"
-                    key="quote_validity"
+                    dataIndex="base_price"
+                    key="base_price"
                     />
-                    <Column
+                    {/* <Column
                     title="Action"
                     key="action"
                     render={(text, record) => (
@@ -69,7 +99,7 @@ class Services extends Component {
                         </Link>
                         </span>
                     )}
-                    />
+                    /> */}
                 </Table>
             </div>
         );

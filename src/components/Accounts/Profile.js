@@ -15,7 +15,7 @@ class Profile extends Component {
                 <Button type="primary" style={{marginBottom:'20px'}}>
                     <Link to="/request/quotation">Request Quotation</Link>
                 </Button>
-                <ClientProfile />
+                {/* <ClientProfile /> */}
             </div>
         );
     }
