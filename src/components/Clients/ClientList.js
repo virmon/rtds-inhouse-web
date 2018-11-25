@@ -2,53 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Table, Icon, message, Popconfirm } from 'antd';
-import { getJwt } from '../../helpers/jwt';
+// import { getJwt } from '../../helpers/jwt';
 import SearchBox from '../Search/SearchBox';
-import dummy_qs from '../../utils/dummy_qs';
+// import dummy_qs from '../../utils/dummy_qs';
 
 const { Column, ColumnGroup } = Table;
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name'
-  },
-  {
-    title: 'Date Modified',
-    dataIndex: 'dateMod',
-    key: 'dateMod'
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <Icon type="edit" onClick={() => console.log('edit')} style={{color: '#6699cc', cursor: 'pointer'}} />
-        <span className="ant-divider" />
-        <Icon type="delete" onClick={() => console.log('delete')} style={{color: '#cc6666', cursor: 'pointer'}} />
-      </span>
-    ),
-  }
-];
-
-const dummy = [
-  {
-    "client_name": "Oil My Goodness",
-    "projects": 3,
-    "quote": 1
-  },
-  {
-    "client_name": "Mashiso",
-    "projects": 1,
-    "quote": 1
-  },
-  {
-    "client_name": "MCK",
-    "projects": 2,
-    "quote": 1
-  },
-];
 
 class ClientList extends Component {
   constructor(props) {
@@ -71,17 +29,17 @@ class ClientList extends Component {
   // }
 
   // handleDelete(key) {
-  //   axios.delete(`https://pure-harbor-18418.herokuapp.com/products/${key}`)
+  //   axios.delete(`/${key}`)
   //     .then(res => {
   //       console.log(res);
   //       console.log(res.data);
   //       this.setState({
   //         loading: true
   //       })
-  //       axios.get('https://pure-harbor-18418.herokuapp.com/products').then(response =>{
+  //       axios.get('').then(response =>{
   //         this.setState({
   //           loading: false,
-  //           products: response.data,
+  //           clients: response.data,
   //         })
   //       })
   //       message.success('Successfully Deleted');
@@ -89,13 +47,13 @@ class ClientList extends Component {
   // }
 
   componentDidMount() {
-    axios.get('/clients').then(response =>{
-      // this.setState({
-      //   loading: false,
-      //   clients: response.data,
-      //   numberOfRecords: response.data.length
-      // })
-      console.log(response.data);
+    axios.get('/api//clients/').then(response =>{
+      this.setState({
+        loading: false,
+        clients: response.data.clients,
+        numberOfRecords: response.data.clients.length
+      })
+      console.log(response.data.clients);
     })
     .catch(function (error) {
       console.log(error);
