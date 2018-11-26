@@ -29,5 +29,13 @@
     "react-app-rewire-less": "^2.0.7",
     "react-app-rewired": "^1.3.3"
   },
-  "proxy": "https://redtomatods-api.herokuapp.com"
+  "root":"build/",
+    "routes":{
+        "/**": "index.html"
+    },
+    "proxies":{
+      "/api/":{
+        "origin":"http://redtomatods-api.herokuapp.com/api"
+        }
+        }
 }
