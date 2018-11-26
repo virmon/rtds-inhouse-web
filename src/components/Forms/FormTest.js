@@ -141,29 +141,6 @@ componentDidMount() {
         </FormItem>
         <FormItem
           {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-          label={index === 0 ? 'Service' : ''}
-          required={false}
-          key={k-1}
-        >
-          {getFieldDecorator(`service[${k-1}]`, {
-            validateTrigger: ['onChange', 'onBlur'],
-            rules: [{
-              required: false,
-              whitespace: true
-            }],
-          })(
-            <Select placeholder="Select service">
-            {/* {
-              this.state.services.map((service) => 
-                <Option value={service.service_name} onChange={this.onChange}>{service.service_name}</Option>
-              )
-            } */}
-              <Option value="Layout Photography">Layout Photography</Option>
-            </Select>
-          )}
-        </FormItem>
-        <FormItem
-          {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
           label={index === 0 ? 'Type' : ''}
           required={false}
           key={k-1}
@@ -176,7 +153,35 @@ componentDidMount() {
             }],
           })(
             <Select placeholder="Select service type">
-                        <Option value="Photography">Photography</Option>
+            {
+              this.state.services.map((service) => 
+                <Option value={service.service_cat} onChange={this.onChange}>{service.service_cat}</Option>
+              )
+            }
+                        {/* <Option value="Photography">Photography</Option> */}
+            </Select>
+          )}
+        </FormItem>
+        <FormItem
+          {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+          label={index === 0 ? 'Service' : ''}
+          required={false}
+          key={k-1}
+        >
+          {getFieldDecorator(`service[${k-1}]`, {
+            validateTrigger: ['onChange', 'onBlur'],
+            rules: [{
+              required: false,
+              whitespace: true
+            }],
+          })(
+            <Select placeholder="Select service">
+            {
+              this.state.services.map((service) => 
+                <Option value={service.service_name} onChange={this.onChange}>{service.service_name}</Option>
+              )
+            }
+              {/* <Option value="Layout Photography">Layout Photography</Option> */}
             </Select>
           )}
         </FormItem>
