@@ -251,6 +251,7 @@ componentDidMount() {
           </Button>
         </FormItem>
         <FormItem {...formItemLayoutWithOutLabel}>
+          <Button type="deafult" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Cancel</Button>
           <Button type="primary" htmlType="submit">Send Request</Button>
         </FormItem>
       </Form>

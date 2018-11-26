@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Icon, message, Popconfirm, Card, Col, Row } from 'antd';
 import axios from 'axios';
+import Nav from '../base_layout/Nav';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class Dashboard extends Component {
     render() {
         return(
             <div>
+                <Nav />
                 <h2>Dashboard</h2>
                 <Row gutter={16}>
                     <Col span={8}>

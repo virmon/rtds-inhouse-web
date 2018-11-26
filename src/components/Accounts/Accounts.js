@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import AccountsTable from '../Tables/AccountsTable';
 import {Button} from 'antd';
+import Nav from '../base_layout/Nav';
 
 class Accounts extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class Accounts extends Component {
     render() {
         return(
             <div>
+                <Nav/ >
                 <Button type="primary" style={{marginBottom:'20px'}}>
                     <Link to="/accounts/admin/form">Create New Account</Link>
                 </Button>

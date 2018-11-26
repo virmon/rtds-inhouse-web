@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Table, Button } from 'antd';
 // import { getJwt } from '../../helpers/jwt';
 import SearchBox from '../Search/SearchBox';
+import Nav from '../base_layout/Nav';
 // import dummy_qs from '../../utils/dummy_qs';
 
 const { Column, ColumnGroup } = Table;
@@ -76,6 +77,7 @@ class ClientList extends Component {
     });
     return(
       <div>
+        <Nav />
       <h2>Clients</h2>
       {/* <Button type="primary" style={{marginBottom:'20px'}}>
           <Link to="/accounts/client/form">Add New Client</Link>

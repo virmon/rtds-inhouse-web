@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect, his
 // import menus from '../../utils/menu';
 
 // import components
-import AppHeader from './AppHeader';
+import Nav from './Nav';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppFooter from './AppFooter';
 import Header from './Header/HeaderV2';
@@ -126,17 +126,6 @@ class AppLayout extends Component {
               {/* <img src={logo} alt="logo" width="100px" height="100px" /> */}
             </div>
           </div>
-          <div className="nav">
-            {/* <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
-            <Link to='/clients' className="nav-item">CLIENTS</Link>
-            <Link to='/services' className="nav-item">SERVICES</Link>
-            <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link> */}
-                <Link to='/profile' className="nav-item">ClIENT PROFILE</Link>
-                <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
-                <Link to='/clients' className="nav-item">CLIENTS</Link>
-                <Link to='/services' className="nav-item">SERVICES</Link>
-                <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link>
-            </div>
             {/* <Link to='/quotations' className="nav-item">QUOTATIONS</Link> */}
             {/* <Link to='/quotations/item' className="nav-item">QUOTATION ITEM</Link> */}
             {/* <Link to='/projects' className="nav-item">PROJECTS</Link> */}
@@ -144,7 +133,7 @@ class AppLayout extends Component {
           <div className="content">
               <Switch>
                 <Route exact path="/" component={Login} />
-                <AuthenticatedComponent>
+                {/* <AuthenticatedComponent> */}
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/clients" component={ClientList}/>
                 <Route exact path="/client/:id" component={ClientProfile}/>
@@ -152,11 +141,12 @@ class AppLayout extends Component {
                 <Route exact path="/services" component={Services}/>
                 <Route exact path="/accounts/admin" component={Accounts}/>
                 <Route exact path="/accounts/admin/form" component={AdminForm}/>
+                <Route exact path="/accounts/client/form" component={ClientForm}/>
                 {/* <Route exact path="/request/quotation/:id" component={ClientForm}/> */}
                 <Route exact path="/profile" component={Profile}/>
                 {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
                 <Route exact path="/request/quotation" component={Form}/>
-                </AuthenticatedComponent>
+                {/* </AuthenticatedComponent> */}
                 <Route component={NoMatch}/>
               </Switch>
           </div>

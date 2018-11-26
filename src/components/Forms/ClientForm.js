@@ -94,7 +94,7 @@ class ClientForm extends Component {
         } : null;
         return (
           <div>
-            {/* <h2>New Client Form</h2><br/> */}
+            <h2>Signup Form</h2><br/>
             <Form layout={formLayout}>
               <FormItem
                 label="First Name"
@@ -181,7 +181,7 @@ class ClientForm extends Component {
             </FormItem>
 
               <FormItem {...buttonItemLayout}>
-                {/* <Button type="deafult" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Cancel</Button> */}
+                <Button type="deafult" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Back to login</Button>
                 <Button type="primary" onClick={this.handleSubmit} style={{margin: '5px'}}>Sign Up</Button>
               </FormItem>
             </Form>

@@ -3,6 +3,7 @@ import { Button, Card, Col, Row } from 'antd';
 import QuotationTable from '../Tables/QuotationTable';
 import InvoiceTable from '../Tables/InvoiceTable';
 import axios from 'axios';
+import Nav from '../base_layout/Nav';
 
 class ClientProfile extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class ClientProfile extends Component {
     render() {
         return(
             <div>
+                <Nav/>
                 <Button type="primary" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Back</Button>
                 {/* <Row gutter={16}>
                     <Col span={8}>

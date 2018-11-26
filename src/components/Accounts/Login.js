@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import { Button, Input } from 'antd';
-import { history, withRouter } from 'react-router-dom';
+import { history, withRouter, Link } from 'react-router-dom';
 import ClientForm from '../Forms/ClientForm';
 import axios from 'axios';
 import './login.css';
+import logo from '../../rtds-logo.svg';
 
-class SignUp extends Component {
-    render() {
-        return(
-            <div>
-                <form onSubmit = {e => this.handleSubmit(e)} >
-                    <div style={{width:'50%', height:'50%', border:'1px solid rgb(171, 211, 186)', padding:'30px', margin:'10px'}}>
-                        <h2>Sign Up</h2>
-                        <ClientForm />
-                    </div>
-                </form>
-            </div>
-        );
-    }
-}
+// class SignUp extends Component {
+//     render() {
+//         return(
+//             <div>
+//                 <form onSubmit = {e => this.handleSubmit(e)} >
+//                     <div style={{width:'50%', height:'50%', border:'1px solid rgb(171, 211, 186)', padding:'30px', margin:'10px'}}>
+//                         <h2>Sign Up</h2>
+//                         <ClientForm />
+//                     </div>
+//                 </form>
+//             </div>
+//         );
+//     }
+// }
 
 class Login extends Component {
     constructor(props) {
@@ -63,25 +64,28 @@ class Login extends Component {
         return(
             <div>
               <form onSubmit = {e => this.handleSubmit(e)} >
-                  <div style={{width:'50%', height:'50%', border:'1px solid rgb(171, 211, 186)', padding:'30px', margin:'10px'}}>
-                    <h2>Login</h2>
-                    <label>Email</label><input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
-                    <label>Password</label><input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
-                    <button className="login-btn" type="submit">Login</button>
-                    {/* <Button className="login-btn" type="submit">Login</Button> */}
+                    {/* <h2>Login</h2> */}
+                <div className="login-container">
+                    <img src={logo} alt={logo} className="logo-img"/><br/>
+                    <label>Email</label>
+                        <input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
+                    <label>Password</label>
+                        <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
+                    <button className="login-btn" type="submit">LOGIN</button>
+                    <Link to="/accounts/client/form">SIGN UP</Link>
                   </div>
               </form>
 
-              <SignUp />
+              {/* <SignUp /> */}
             
-              <ul>
+              {/* <ul>
                   <li>username: mckflowers@gmail.com</li>
                   <li>password: mckflowers123</li>
               </ul><br/>
               <ul>
                   <li>default password for new admins created</li>
                   <li>password: 123456</li>
-              </ul>
+              </ul> */}
           </div>
         );
     }

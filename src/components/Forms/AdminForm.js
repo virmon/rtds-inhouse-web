@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, InputNumber, message, Button, Upload, Icon, Select, Radio } from 'antd';
 import axios from 'axios';
+import Nav from '../base_layout/Nav';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const Option = Select.Option;
@@ -103,6 +104,7 @@ class AdminForm extends Component {
         } : null;
         return (
           <div>
+            <Nav />
             <h2>New Admin Form</h2><br/>
             <Form layout={formLayout}>
               <FormItem

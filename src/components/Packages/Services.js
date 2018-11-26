@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Icon, message, Popconfirm } from 'antd';
 import axios from 'axios';
+import Nav from '../base_layout/Nav';
 
 const { Column, ColumnGroup } = Table;
 
@@ -70,6 +71,7 @@ class Services extends Component {
         // console.log(this.state.services);
         return(
             <div>
+                <Nav/>
                 <h2>Services</h2>
                 <Table bordered dataSource={this.state.services}>
                 {/* <Table bordered dataSource={dummy}> */}

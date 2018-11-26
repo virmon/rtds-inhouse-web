@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Icon, message, Popconfirm, Card, Col, Row, Button } from 'antd';
 import axios from 'axios';
+import Nav from '../base_layout/Nav';
 import InvoiceTable from '../Tables/InvoiceTable';
 
 const { Column, ColumnGroup } = Table;
@@ -22,7 +23,8 @@ class QuotationDetail extends Component {
             invoice: [],
             quoteDetail: [],
             total_sales: 0,
-            key: localStorage.getItem('public-id')
+            key: localStorage.getItem('public-id'),
+            isAdmin: localStorage.getItem('role')
         };
     
         // this.handleEdit = this.handleEdit.bind(this);
@@ -74,6 +76,9 @@ class QuotationDetail extends Component {
         console.log(this.state.invoice);
         return(
             <div className="">
+                {
+                    this.state.isAdmin? <Nav />:''
+                }
                 <Button type="primary" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Back</Button>
                 <Row gutter={16}>
                     <Col span={8}>
