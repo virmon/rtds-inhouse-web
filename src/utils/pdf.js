@@ -22,6 +22,18 @@ export function generatePDF(data) {
           { text: data.total_price, fontSize: 12 }
         ],
         margin: [0, 25, 0, 5]
+      },
+      {
+        canvas: [
+          {
+            type: "rect",
+            x: -40,
+            y: -40,
+            w: 600,
+            h: 10,
+            color: "#ABD3CC"
+          }
+        ]
       }
     ],
     defaultStyle: {

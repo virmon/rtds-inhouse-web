@@ -124,7 +124,7 @@ class QuotationDetail extends Component {
                     />
                 </Table><br/>
 
-                <InvoiceTable data={this.state.invoices}/><br/>
+                <InvoiceTable data={this.state.invoice}/><br/>
 
                 <Row gutter={16}>
                     <Col span={16}>

@@ -61,6 +61,16 @@ class InvoiceTable extends Component {
   //         console.log(error);
   //       })
   // }
+  checkPaid(id) {
+    axios.put(`/api/invoice/${id}`).then(response =>{
+      console.log(`admin rejected quotation #(${id})`);
+      this.successReject();
+    })
+    .catch(function (error) {
+      console.log(error);
+      this.errorReject();
+    })
+  }
 
   render() {
     return (
@@ -87,24 +97,27 @@ class InvoiceTable extends Component {
           />
             <Column
             title="Amount in Php"
-            dataIndex="total price"
-            key="total price"
+            dataIndex="total_price"
+            key="total_price"
             width="20%"
           />
-            {/* <Column
+            <Column
             title="Created"
             dataIndex="date_created"
             key="date_created"
             width="20%"
-          /> */}
+          />
           <Column
             title="Action"
             key="action"
             render={(text, record) => (
               <span>
-                {/* <span className="ant-divider" /> */}
                 <Link onClick={() => generatePDF(text)} to="#">
                   Save PDF
+                </Link>
+                <span className="ant-divider" />
+                <Link onClick={() => this.checkPaid(record.invoice_id)} to="#">
+                  Paid
                 </Link>
               </span>
             )}

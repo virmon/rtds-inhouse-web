@@ -230,7 +230,7 @@ componentDidMount() {
                     { required: false },
                     ],
                 })(
-                    <Input placeholder="Promo" />
+                    <Input placeholder="Promo" defaultValue=""/>
                 )
                 }
         </FormItem>
