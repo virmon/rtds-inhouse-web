@@ -41,5 +41,5 @@ export function generatePDF(data) {
     }
   };
 
-  pdfMake.createPdf(docDefinition).download("rtds.pdf");
+  pdfMake.createPdf(docDefinition).open();
 }

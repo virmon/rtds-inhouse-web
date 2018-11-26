@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Icon, message, Popconfirm, Card, Col, Row } from "antd";
+import { Table, Icon, message, Popconfirm, Card, Col, Row, Tag } from "antd";
 import { Link } from "react-router-dom";
 import { generatePDF } from "../../utils/pdf";
 
@@ -104,6 +104,7 @@ class InvoiceTable extends Component {
             dataIndex="status"
             key="status"
             width="10%"
+            // render={(text, record) => {return <Tag color={this.state.color} onChange={() => this.checkColor(record.status)}>{record.status}</Tag>}}
           />
             <Column
             title="Amount in Php"

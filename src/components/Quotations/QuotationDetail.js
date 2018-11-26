@@ -114,13 +114,19 @@ class QuotationDetail extends Component {
                     title="QTY"
                     dataIndex="qty"
                     key="qty"
-                    width="20%"
+                    width="10%"
                     />
                     <Column
                     title="PRICE"
                     dataIndex="unit_price"
                     key="unit_price"
-                    width="40%"
+                    width="20%"
+                    />
+                    <Column
+                    title="Subtotal"
+                    dataIndex="sub_total"
+                    key="sub_total"
+                    width="20%"
                     />
                 </Table><br/>
 
