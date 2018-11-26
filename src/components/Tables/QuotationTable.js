@@ -33,25 +33,64 @@ class QuotationTable extends Component {
         super(props);
 
         this.createInvoice = this.createInvoice.bind(this);
-        this.approve = this.approve.bind(this);
+        this.handleApprove = this.handleApprove.bind(this);
     }
 
-    approve(id) {
+    handleApprove(id) {
         axios.put(`/api/quotation/${id}`).then(response =>{
-            console.log('id');
+            console.log(`admin approved quotation #(${id})`);
+            this.success();
           })
           .catch(function (error) {
             console.log(error);
+            this.error();
           })
     }
+
+    handleReject(id) {
+        axios.put(`/api/quotation/${id}/reject`).then(response =>{
+            console.log(`admin rejected quotation #(${id})`);
+            this.successReject();
+          })
+          .catch(function (error) {
+            console.log(error);
+            this.errorReject();
+          })
+    }
+
+    success = () => {
+        message.success('Approved Successfully', 10);
+    };
+
+    successInvoice = () => {
+        message.success('Approved Successfully', 10);
+    };
+  
+    error = () => {
+        message.error('Could not be approved.', 10);
+    };
+
+    errorInvoice = () => {
+        message.error('Could not create invoice.', 10);
+    };
+
+    successReject = () => {
+        message.success('Rejected Successfully', 10);
+    };
+  
+    errorReject = () => {
+        message.error('Could not be rejected.', 10);
+    };
 
     createInvoice(id) {
         axios.post(`/api/invoice/${id}`).then(response =>{
             console.log('id');
-          })
-          .catch(function (error) {
+            this.successInvoice();
+        })
+        .catch(function (error) {
             console.log(error);
-          })
+            this.errorInvoice();
+        })
     }
 
     render(){
@@ -69,25 +108,25 @@ class QuotationTable extends Component {
                     title="Quotation No."
                     dataIndex="quote_id"
                     key="quote_id"
-                    width="20%"
+                    width="10%"
                     />
                     <Column
                     title="Status"
                     dataIndex="quote_status"
                     key="quote_status"
-                    width="10%"
+                    width="20%"
                     />
                     <Column
                     title="Validity"
                     dataIndex="quote_validity"
                     key="quote_validity"
-                    width="20%"
+                    width="25%"
                     />
                     <Column
                     title="Created"
                     dataIndex="data_created"
                     key="data_created"
-                    width="20%"
+                    width="25%"
                     />
                     <Column
                         title="Action"
@@ -101,11 +140,17 @@ class QuotationTable extends Component {
                                 {/* <Link to={'/invoice/id'}>
                                     ACCEPT
                                 </Link> */}
-                                <span onClick={() => this.approve(record.quote_id)}>ACCEPT</span>
+                                <Link onClick={() => this.handleApprove(record.quote_id)} to="#">
+                                    ACCEPT
+                                </Link>
                             <span className="ant-divider" />
-                                {/* <Link to={`/invoice/${record.quote_id}`}> */}
-                                    <span onClick={() => this.createInvoice(record.quote_id)}>CREATE INVOICE</span>
-                                {/* </Link> */}
+                                <Link onClick={() => this.handleReject(record.quote_id)} to="#">
+                                    Reject
+                                </Link>
+                            <span className="ant-divider" />
+                                <Link onClick={() => this.createInvoice(record.quote_id)} to="#">
+                                    Create invoice
+                                </Link>
                             </span>
                         )}
                     />

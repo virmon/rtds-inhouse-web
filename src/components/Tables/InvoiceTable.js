@@ -3,7 +3,7 @@ import { Table, Icon, message, Popconfirm, Card, Col, Row } from "antd";
 import { Link } from "react-router-dom";
 import { generatePDF } from "../../utils/pdf";
 
-// import axios from 'axios';
+import axios from 'axios';
 
 const { Column, ColumnGroup } = Table;
 // import dummy from '../../utils/dummy.js';
@@ -30,6 +30,38 @@ const dummy = [
 ];
 
 class InvoiceTable extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        // invoices: [],
+        key: localStorage.getItem('public-id')
+    };
+
+    // this.handleEdit = this.handleEdit.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
+  }
+
+//   handleEdit(key) {
+//     console.log(key);
+//   }
+
+  // componentDidMount() {
+  //     let pathSnippets = this.props.location.pathname.split('/');
+  //     console.log(pathSnippets[2]);
+  //     axios.get(``).then(response =>{
+  //         this.setState({
+  //             company_name: response.data.client[0].company_name,
+  //             invoices: response.data.invoices[0].company_name,
+  //             quoteDetail: response.data
+  //         })
+  //         console.log(response.data.invoices);
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       })
+  // }
+
   render() {
     return (
       <div>
@@ -55,16 +87,16 @@ class InvoiceTable extends Component {
           />
             <Column
             title="Amount in Php"
-            dataIndex="amount"
-            key="amount"
+            dataIndex="total price"
+            key="total price"
             width="20%"
           />
-            <Column
+            {/* <Column
             title="Created"
             dataIndex="date_created"
             key="date_created"
             width="20%"
-          />
+          /> */}
           <Column
             title="Action"
             key="action"

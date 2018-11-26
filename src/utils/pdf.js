@@ -11,14 +11,15 @@ export function generatePDF(data) {
             y: -40,
             w: 600,
             h: 101,
-            color: "black"
+            color: "#db6162"
           }
         ]
       },
       {
         text: [
           { text: "Quotation No: ", fontSize: 12, bold: true },
-          { text: data.invoice_no, fontSize: 12 }
+          { text: data.invoice_no, fontSize: 12 },
+          { text: data.total_price, fontSize: 12 }
         ],
         margin: [0, 25, 0, 5]
       }

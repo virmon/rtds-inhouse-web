@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Col, Row } from 'antd';
+import { Button, Card, Col, Row } from 'antd';
 import QuotationTable from '../Tables/QuotationTable';
 import InvoiceTable from '../Tables/InvoiceTable';
 import axios from 'axios';
@@ -24,9 +24,9 @@ class ClientProfile extends Component {
             this.setState({
                 client: response.data.client[0].company_name,
                 quotations: response.data.quotations,
-                invoice: response.data.invoices
+                invoices: response.data.invoices
             })
-            // console.log(response.data.invoices);
+            console.log(response.data.invoices[0]);
           })
           .catch(function (error) {
             console.log(error);
@@ -36,6 +36,7 @@ class ClientProfile extends Component {
     render() {
         return(
             <div>
+                <Button type="primary" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Back</Button>
                 {/* <Row gutter={16}>
                     <Col span={8}>
                         <Card title="CLIENT" bordered={false}>Oil My Goodness</Card>

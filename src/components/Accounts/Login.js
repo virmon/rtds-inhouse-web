@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
+import { Button, Input } from 'antd';
 import { history, withRouter } from 'react-router-dom';
+import ClientForm from '../Forms/ClientForm';
 import axios from 'axios';
+import './login.css';
+
+class SignUp extends Component {
+    render() {
+        return(
+            <div>
+                <form onSubmit = {e => this.handleSubmit(e)} >
+                    <div style={{width:'50%', height:'50%', border:'1px solid rgb(171, 211, 186)', padding:'30px', margin:'10px'}}>
+                        <h2>Sign Up</h2>
+                        <ClientForm />
+                    </div>
+                </form>
+            </div>
+        );
+    }
+}
 
 class Login extends Component {
     constructor(props) {
@@ -39,12 +57,19 @@ class Login extends Component {
         return(
             <div>
               <form onSubmit = {e => this.handleSubmit(e)} >
-                  <label>email</label><input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
-                  <label>password</label><input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
-                  <button type="submit">Login</button>
+                  <div style={{width:'50%', height:'50%', border:'1px solid rgb(171, 211, 186)', padding:'30px', margin:'10px'}}>
+                    <h2>Login</h2>
+                    <label>Email</label><input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
+                    <label>Password</label><input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
+                    <button className="login-btn" type="submit">Login</button>
+                    {/* <Button className="login-btn" type="submit">Login</Button> */}
+                  </div>
               </form>
+
+              <SignUp />
+            
               <ul>
-                  <li>username: omg@email</li>
+                  <li>username: omg@gmail.com</li>
                   <li>password: OMG123</li>
               </ul><br/>
               <ul>

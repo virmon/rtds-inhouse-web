@@ -76,10 +76,10 @@ class ClientList extends Component {
     });
     return(
       <div>
-      {/* <h2>Clients</h2> */}
-      <Button type="primary" style={{marginBottom:'20px'}}>
+      <h2>Clients</h2>
+      {/* <Button type="primary" style={{marginBottom:'20px'}}>
           <Link to="/accounts/client/form">Add New Client</Link>
-      </Button>
+      </Button> */}
       <SearchBox triggerSearch={this.handleSearch} />
       {/* <Table bordered dataSource={this.state.clients}> */}
       {/* <Table bordered dataSource={dummy}> */}

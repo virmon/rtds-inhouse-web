@@ -16,7 +16,13 @@ class QuotationDetail extends Component {
         super(props);
     
         this.state = {
-          quoteDetail: []
+            company_name: '',
+            quote_status: '',
+            quote_validity: '',
+            invoice: [],
+            quoteDetail: [],
+            total_sales: 0,
+            key: localStorage.getItem('public-id')
         };
     
         // this.handleEdit = this.handleEdit.bind(this);
@@ -47,12 +53,17 @@ class QuotationDetail extends Component {
     
     componentDidMount() {
         let pathSnippets = this.props.location.pathname.split('/');
-        console.log(pathSnippets[2]);
-        axios.get('/api/quotation/'+pathSnippets[2]).then(response =>{
+        // console.log(pathSnippets[2]);
+        axios.get(`/api/quotation/${pathSnippets[2]}`).then(response =>{
             this.setState({
-                quoteDetail: response.data
+                company_name: response.data.company_name,
+                quote_status: response.data.quote_status,
+                quote_validity: response.data.quote_validity,
+                invoice: response.data.invoice,
+                quoteDetail: response.data.quotation_details,
+                total_sales: response.data.total_sales
             })
-            console.log(response.data.quote_validity);
+            console.log(response.data.invoice);
           })
           .catch(function (error) {
             console.log(error);
@@ -60,18 +71,19 @@ class QuotationDetail extends Component {
     }
 
     render() {
+        console.log(this.state.invoice);
         return(
             <div className="">
                 <Button type="primary" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Back</Button>
                 <Row gutter={16}>
                     <Col span={8}>
-                        <Card title="CLIENT" bordered={false}>Oil My Goodness</Card>
+                        <Card title="CLIENT" bordered={false}>{this.state.company_name}</Card>
                     </Col>
                     <Col span={8}>
-                        <Card title="STATUS" bordered={false}>{this.state.quoteDetail.quote_status}</Card>
+                        <Card title="STATUS" bordered={false}>{this.state.quote_status}</Card>
                     </Col>
                     <Col span={8}>
-                        <Card title="LAST UPDATED" bordered={false}>{this.state.quoteDetail.quote_validity}</Card>
+                        <Card title="VALIDITY" bordered={false}>{this.state.quote_validity}</Card>
                     </Col>
                 </Row><br/>
                 {/* <Row gutter={16}>
@@ -89,7 +101,7 @@ class QuotationDetail extends Component {
                     bordered
                     pagination={false} 
                     scroll={{ y: 300 }} 
-                    dataSource={this.state.quoteDetail.quotation_details}
+                    dataSource={this.state.quoteDetail}
                     title={()=> 'Services'}
                 >
                     <Column
@@ -112,13 +124,13 @@ class QuotationDetail extends Component {
                     />
                 </Table><br/>
 
-                <InvoiceTable/><br/>
+                <InvoiceTable data={this.state.invoices}/><br/>
 
                 <Row gutter={16}>
                     <Col span={16}>
                     </Col>
                     <Col span={8}>
-                        <Card title="TOTAL" bordered={false}>10,000</Card>
+                        <Card title="TOTAL" bordered={false}>{this.state.total_sales}</Card>
                     </Col>
                 </Row>
             </div>

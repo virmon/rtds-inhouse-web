@@ -60,6 +60,7 @@ class ClientForm extends Component {
                   firstname: '',
                   lastname: '',
                   company_name: '',
+                  password: '',
                   email: '',
                   mobile: ''
                 });
@@ -93,7 +94,7 @@ class ClientForm extends Component {
         } : null;
         return (
           <div>
-            <h2>New Client Form</h2><br/>
+            {/* <h2>New Client Form</h2><br/> */}
             <Form layout={formLayout}>
               <FormItem
                 label="First Name"
@@ -138,6 +139,20 @@ class ClientForm extends Component {
             </FormItem>
 
             <FormItem
+                label="Password"
+                hasFeedback
+                {...formItemLayout}
+              >
+                {getFieldDecorator('password', {
+                    rules: [
+                    { required: true, message: 'Please input password!' },
+                    ],
+                })(
+                    <Input placeholder="Password" type="password" />
+                )}
+            </FormItem>
+
+            <FormItem
                 label="Email"
                 hasFeedback
                 {...formItemLayout}
@@ -166,8 +181,8 @@ class ClientForm extends Component {
             </FormItem>
 
               <FormItem {...buttonItemLayout}>
-                <Button type="deafult" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Cancel</Button>
-                <Button type="primary" onClick={this.handleSubmit} style={{margin: '5px'}}>Save</Button>
+                {/* <Button type="deafult" onClick={() => this.props.history.goBack()} style={{margin: '5px'}}>Cancel</Button> */}
+                <Button type="primary" onClick={this.handleSubmit} style={{margin: '5px'}}>Sign Up</Button>
               </FormItem>
             </Form>
           </div>
