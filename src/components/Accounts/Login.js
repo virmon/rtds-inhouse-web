@@ -33,7 +33,7 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         
     }
-
+    
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -49,8 +49,14 @@ class Login extends Component {
         }).then(res => {
             localStorage.setItem('x-access-token', res.data.token);
             localStorage.setItem('public-id', res.data.public_id);
-            console.log(res.data);
-            this.props.history.push('/dashboard');
+            localStorage.setItem('role', res.data.admin);
+            // console.log(res.data.admin);
+            if(res.data.admin) {
+                this.props.history.push(`/dashboard`);
+            }
+            else {
+                this.props.history.push(`/profile`);
+            }
         });
     }
     render() {

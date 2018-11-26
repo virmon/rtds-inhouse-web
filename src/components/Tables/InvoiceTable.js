@@ -63,6 +63,16 @@ class InvoiceTable extends Component {
   //         console.log(error);
   //       })
   // }
+  checkPaid(id) {
+    axios.put(`/api/invoice/${id}`).then(response =>{
+      console.log(`admin rejected quotation #(${id})`);
+      this.successReject();
+    })
+    .catch(function (error) {
+      console.log(error);
+      this.errorReject();
+    })
+  }
 
   checkPaid(id) {
       axios.put(`/api/invoice/${id}`).then(response =>{

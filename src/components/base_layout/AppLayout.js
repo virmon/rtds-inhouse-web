@@ -65,8 +65,9 @@ const menus = module.export = [
 class AppLayout extends Component {
   state = {
     collapsed: false,
+    isHide: localStorage.getItem('role')
   };
-  
+
   onCollapse = (collapsed) => {
     // console.log(collapsed);
     this.setState({ collapsed });
@@ -105,6 +106,7 @@ class AppLayout extends Component {
   logout() {
     localStorage.removeItem('x-access-token');
     localStorage.removeItem('public-id');
+    localStorage.removeItem('role');
     // this.props.history.push('/');
     // console.log(this.props.history);
   }
@@ -125,18 +127,23 @@ class AppLayout extends Component {
             </div>
           </div>
           <div className="nav">
-            <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
+            {/* <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
             <Link to='/clients' className="nav-item">CLIENTS</Link>
             <Link to='/services' className="nav-item">SERVICES</Link>
-            <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link>
-            <Link to='/profile' className="nav-item">PROFILE</Link>
+            <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link> */}
+                <Link to='/profile' className="nav-item">ClIENT PROFILE</Link>
+                <Link to='/dashboard' className="nav-item">DASHBOARD</Link>
+                <Link to='/clients' className="nav-item">CLIENTS</Link>
+                <Link to='/services' className="nav-item">SERVICES</Link>
+                <Link to='/accounts/admin' className="nav-item">ACCOUNTS</Link>
+            </div>
             {/* <Link to='/quotations' className="nav-item">QUOTATIONS</Link> */}
             {/* <Link to='/quotations/item' className="nav-item">QUOTATION ITEM</Link> */}
             {/* <Link to='/projects' className="nav-item">PROJECTS</Link> */}
-          </div>
+          {/* </div> */}
           <div className="content">
               <Switch>
-                <Route exact path="/" component={Login}/>
+                <Route exact path="/" component={Login} />
                 <AuthenticatedComponent>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/clients" component={ClientList}/>
