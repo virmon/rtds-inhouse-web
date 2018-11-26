@@ -52,7 +52,7 @@ class Profile extends Component {
                 quotations: response.data.quotations,
                 invoices: response.data.invoices
             })
-            console.log(response.data.quotations);
+            console.log("profile:"+response.data.invoices);
           })
           .catch(function (error) {
             console.log(error);
@@ -122,7 +122,7 @@ class Profile extends Component {
                     />
                     <Column
                     title="Created"
-                    dataIndex="data_created"
+                    dataIndex="date_created"
                     key="data_created"
                     width="25%"
                     />

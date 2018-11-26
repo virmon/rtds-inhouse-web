@@ -69,12 +69,12 @@ class Login extends Component {
               <SignUp />
             
               <ul>
-                  <li>username: omg@gmail.com</li>
-                  <li>password: OMG123</li>
+                  <li>username: mckflowers@gmail.com</li>
+                  <li>password: mckflowers123</li>
               </ul><br/>
               <ul>
                   <li>default password for new admins created</li>
-                  <li>password: (lastname)123</li>
+                  <li>password: 123456</li>
               </ul>
           </div>
         );

@@ -124,8 +124,8 @@ class QuotationTable extends Component {
                     />
                     <Column
                     title="Created"
-                    dataIndex="data_created"
-                    key="data_created"
+                    dataIndex="date_created"
+                    key="date_created"
                     width="25%"
                     />
                     <Column
