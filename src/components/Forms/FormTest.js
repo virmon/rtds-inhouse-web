@@ -14,10 +14,11 @@ class DynamicFieldSet extends React.Component {
 
     this.state = {
       services: [],
-      key: localStorage.getItem('public-id')
+      key: localStorage.getItem('public-id'),
+      promo: ''
     }
 
-    // this.goBack = this.goBack.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 }
 
 componentDidMount() {
@@ -85,6 +86,10 @@ componentDidMount() {
               this.error();
           }
         });
+  }
+
+  handleChange(e) {
+    this.setState({ promo: e.target.value});
   }
 
   success = () => {
@@ -230,7 +235,7 @@ componentDidMount() {
                     { required: false },
                     ],
                 })(
-                    <Input placeholder="Promo" />
+                    <Input placeholder="Promo" onKeyDown={(e) => {this.handleChange(e)}} setFieldsValue={this.state.promo}/>
                 )
                 }
         </FormItem>
