@@ -132,6 +132,7 @@ class QuotationDetail extends Component {
                     dataIndex="sub_total"
                     key="sub_total"
                     width="20%"
+                    render={(text, record) => ( record.unit_price*record.qty)}
                     />
                 </Table><br/>
 
