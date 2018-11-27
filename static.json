@@ -4,7 +4,7 @@
     },
     "proxies":{
         "/api/":{
-          "origin":"https://redtomatods-api.herokuapp.com/api"
+          "origin":"https://redtomatods-api.herokuapp.com"
           }
           }
     }

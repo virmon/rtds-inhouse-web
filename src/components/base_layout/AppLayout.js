@@ -22,6 +22,7 @@ import ClientApp from '../Portal/ClientApp';
 import RequestQuotation from '../Forms/RequestQuotation';
 import RequestQuoteForm from '../Forms/RequestQuoteForm';
 import Form from '../Forms/FormTest';
+import OTP from '../Forms/OneTimeForm';
 import NoMatch from '../NoMatch/NoMatch';
 import './appLayout.css';
 import QuotationDetail from '../Quotations/QuotationDetail';
@@ -146,6 +147,7 @@ class AppLayout extends Component {
                 <Route exact path="/profile" component={Profile}/>
                 {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
                 <Route exact path="/request/quotation" component={Form}/>
+                <Route exact path="/accounts/otp" component={OTP}/>
                 {/* </AuthenticatedComponent> */}
                 <Route component={NoMatch}/>
               </Switch>

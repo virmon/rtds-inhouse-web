@@ -33,9 +33,5 @@
     "routes":{
         "/**": "index.html"
     },
-    "proxies":{
-      "/api/":{
-        "origin":"http://redtomatods-api.herokuapp.com/api"
-        }
-        }
+    "proxy": "http://redtomatods-api.herokuapp.com"
 }

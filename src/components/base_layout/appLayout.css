@@ -36,6 +36,7 @@
   .content {
       grid-area: main;
       background: whitesmoke;
+      min-height: 640px;
   }
 
   .footer {
