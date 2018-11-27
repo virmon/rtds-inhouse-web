@@ -134,6 +134,7 @@ class AppLayout extends Component {
           <div className="content">
               <Switch>
                 <Route exact path="/" component={Login} />
+                <Route exact path="/accounts/client/form" component={ClientForm}/>
                 <AuthenticatedComponent>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/clients" component={ClientList}/>
@@ -142,7 +143,7 @@ class AppLayout extends Component {
                 <Route exact path="/services" component={Services}/>
                 <Route exact path="/accounts/admin" component={Accounts}/>
                 <Route exact path="/accounts/admin/form" component={AdminForm}/>
-                <Route exact path="/accounts/client/form" component={ClientForm}/>
+                
                 {/* <Route exact path="/request/quotation/:id" component={ClientForm}/> */}
                 <Route exact path="/profile" component={Profile}/>
                 {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
