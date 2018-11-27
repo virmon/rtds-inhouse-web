@@ -56,14 +56,15 @@ class ClientForm extends Component {
                 console.log(res);
                 console.log(res.data);
                 this.success();
-                this.props.form.setFieldsValue({
-                  firstname: '',
-                  lastname: '',
-                  company_name: '',
-                  password: '',
-                  email: '',
-                  mobile: ''
-                });
+                this.props.history.push('/');
+                // this.props.form.setFieldsValue({
+                //   firstname: '',
+                //   lastname: '',
+                //   company_name: '',
+                //   password: '',
+                //   email: '',
+                //   mobile: ''
+                // });
               });
             // }
           } else {
@@ -74,11 +75,11 @@ class ClientForm extends Component {
     }
 
     success = () => {
-      message.success('Saved Successfully', 10);
+      message.success('Registered Successfully. Check your email for confirmation.', 10);
     };
 
     error = () => {
-      message.error('Could not be saved. Please try again...', 10);
+      message.error('Could not register. Please try again...', 10);
     };
 
     render() {
