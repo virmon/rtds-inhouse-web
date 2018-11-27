@@ -15,10 +15,12 @@ class DynamicFieldSet extends React.Component {
     this.state = {
       services: [],
       key: localStorage.getItem('public-id'),
-      promo: ''
+      promo: '',
+      selected: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.checkSelected = this.checkSelected.bind(this);
 }
 
 componentDidMount() {
@@ -92,6 +94,12 @@ componentDidMount() {
     this.setState({ promo: e.target.value});
   }
 
+  checkSelected() {
+    if (this.refs) {
+      console.log(this.refs);
+    }
+  }
+
   success = () => {
     message.success('Saved Successfully', 10);
   };
@@ -101,6 +109,7 @@ componentDidMount() {
   };
 
   render() {
+    console.log(this.checkSelected());
     const { getFieldDecorator, getFieldValue } = this.props.form;
     const formItemLayout = {
       labelCol: {
@@ -152,13 +161,18 @@ componentDidMount() {
               whitespace: true
             }],
           })(
-            <Select placeholder="Select service type">
-            {
+            <Select placeholder="Select service type" refs="service">
+            {/* {
               this.state.services.map((service) => 
-                <Option value={service.service_cat} onChange={this.onChange}>{service.service_cat}</Option>
+                <Option value={service.service_name} onChange={this.onChange}>{service.service_name}</Option>
               )
-            }
-                        {/* <Option value="Photography">Photography</Option> */}
+            } */}
+                <Option value="Photography">Photography</Option>
+                <Option value="Web Design">Web Design</Option>
+                <Option value="Graphic Design">Graphic Design</Option>
+                <Option value="Branding">Branding</Option>
+                <Option value="Digital Markting">Digital Marketing</Option>
+                <Option value="Videography">Videography</Option>
             </Select>
           )}
         </FormItem>
@@ -176,12 +190,20 @@ componentDidMount() {
             }],
           })(
             <Select placeholder="Select service">
-            {
+            {/* {
               this.state.services.map((service) => 
                 <Option value={service.service_name} onChange={this.onChange}>{service.service_name}</Option>
               )
-            }
-              {/* <Option value="Layout Photography">Layout Photography</Option> */}
+            } */}
+              <Option value="Layout Photography">Layout Photography</Option>
+              <Option value="Product Photography">Product Photography</Option>
+              <Option value="Host and Domain">Host and Domain</Option>
+              <Option value="Website">Website</Option>
+              <Option value="Business Cards">Business Cards</Option>
+              <Option value="Collaterals">Collaterals</Option>
+              <Option value="Layouts">Layouts</Option>
+              <Option value="Stickers">Stickers</Option>
+              <Option value="Logo Design">Logo Design</Option>
             </Select>
           )}
         </FormItem>

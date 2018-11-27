@@ -3,7 +3,8 @@
     flex-flow: column wrap;
     justify-content: center;
     /* align-items: center; */
-    width: 400px;
+    width: 100%;
+    /* width: 400px; */
     height: 50%;
     border: 3px solid rgb(171, 211, 186);
     padding: 30px;
