@@ -134,7 +134,7 @@ class AppLayout extends Component {
           <div className="content">
               <Switch>
                 <Route exact path="/" component={Login} />
-                {/* <AuthenticatedComponent> */}
+                <AuthenticatedComponent>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/clients" component={ClientList}/>
                 <Route exact path="/client/:id" component={ClientProfile}/>
@@ -148,7 +148,7 @@ class AppLayout extends Component {
                 {/* <Route exact path="/request/quotation" component={RequestQuotation}/> */}
                 <Route exact path="/request/quotation" component={Form}/>
                 <Route exact path="/accounts/otp" component={OTP}/>
-                {/* </AuthenticatedComponent> */}
+                </AuthenticatedComponent>
                 <Route component={NoMatch}/>
               </Switch>
           </div>
