@@ -1,5 +1,5 @@
 # rtds-inhouse-web
-rtds-inhouse-web is a **project tracking web app** for [Redtomato Design Studio](https://redtomatodesignstudio.netlify.com). It allows user admins and clients to keep track of the progress of a project.
+rtds-inhouse-web is a **project tracking web app** for [Redtomato Design Studio](https://redtomatodesignstudio.com). It allows user admins and clients to keep track of the progress of a project.
 
 ## Features
 
